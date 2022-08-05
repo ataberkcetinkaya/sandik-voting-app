@@ -12,8 +12,6 @@ const Login = () => {
     console.log(email + ' - ' + password)
     setEmail('');
     setPassword('')
-
-
   }
 
 
@@ -31,7 +29,7 @@ const Login = () => {
             <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
           </Center>
           <Center>
-            <Button onClick={loginControl} colorScheme='red' size='md'>
+            <Button colorScheme='red' onClick={loginControl} color='white' size='md'>
               Giriş Yap
             </Button>
           </Center>
@@ -43,8 +41,6 @@ const Login = () => {
             </Text>
           </Center>
         </Container>
-
-
       </Center>
 
     </div>

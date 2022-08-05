@@ -26,9 +26,11 @@ const Register = () => {
           <Input border='2px' borderColor='brand.grayBlack' type='password' value={password} mb={4} placeholder='Şifre' onChange={e=> setPassword(e.target.value)} />
           <Input border='2px' borderColor='brand.grayBlack' type='password' value={password} mb={4} placeholder='Şifre Tekrarı' onChange={e=> setPassword(e.target.value)} />
           <Center>
-            <Button onClick={registerControl} bg='brand.grayBlack' color='white' size='md'>
+          
+            <Button onClick={registerControl}  bg='brand.grayBlack'  color='white' size='md'>
               Kayıt Ol
             </Button>
+            
           </Center>
           <Text mt={8} fontSize='sm' color='brand.grayBlack'>
             Hesabın zaten var mı? O zaman <Link color='brand.theRed'>Giriş Yap</Link>
