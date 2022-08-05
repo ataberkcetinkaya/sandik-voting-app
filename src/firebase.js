@@ -4,12 +4,12 @@ import toast from 'react-hot-toast';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCST9anWSg0i2vZgrp75RtfMT3xCGYsl2g",
-    authDomain: "sandik-voting-app.firebaseapp.com",
-    projectId: "sandik-voting-app",
-    storageBucket: "sandik-voting-app.appspot.com",
-    messagingSenderId: "288467988676",
-    appId: "1:288467988676:web:7e7185531b4c17b0c05991"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_ID
 };
 
 const app = initializeApp(firebaseConfig); // Buraya kadar olan kısım firebaseden gelen kodlar
