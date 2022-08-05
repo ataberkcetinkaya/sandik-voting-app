@@ -1,43 +1,50 @@
-import React , {useState } from 'react'
+import React, { useState } from 'react'
 import logo from './logo.png';
-import { Input, Container, Button, Center, Image, Text } from '@chakra-ui/react'
-
-
-
+import { Input, Container, Button, Center, Image, Text, Link } from '@chakra-ui/react'
 
 const Login = () => {
-  
-const[email,setEmail]=useState('');
-const[password,setPassword]=useState('');
 
-const loginControl = () =>{
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  console.log (email + ' - ' +  password)
-  setEmail('');
-  setPassword('')
+  const loginControl = () => {
+
+    console.log(email + ' - ' + password)
+    setEmail('');
+    setPassword('')
 
 
-}
+  }
 
 
   return (
     <div>
       <Center h='500px'>
-        <Container maxW='300px' color='black'>
+        <Container color='black'>
           <Center>
             <Image boxSize='170px' src={logo}></Image>
           </Center>
-          <Input type='email' value={email} placeholder='E-Mail' onChange={e=> setEmail(e.target.value)} />
-          <Input type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e=> setPassword(e.target.value)} />
+          <Center>
+            <Input w='300px' type='email' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
+          </Center>
+          <Center>
+            <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
+          </Center>
           <Center>
             <Button onClick={loginControl} colorScheme='red' size='md'>
-              Giriş
+              Giriş Yap
             </Button>
           </Center>
-          <Text fontSize='sm' color='tomato'>
-            Yoksa sen sandik platformuna üye değil misin ? Hemen Kayıt Ol
-          </Text>
+          <Center>
+            <Text mt={5} as='sub' fontSize='sm' color='black'>
+              Yoksa sen sandik platformuna üye değil misin ? Hemen <Link color='red' fontWeight='bold' href='#'>
+                Kayıt Ol
+              </Link>
+            </Text>
+          </Center>
         </Container>
+
+
       </Center>
 
     </div>
