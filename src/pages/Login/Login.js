@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import { Input, Container, Button, Center, Image, Text, Link, Flex } from '@chakra-ui/react'
 import logo from '../../assets/logo.png';
 import { login } from '../../firebase';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
 
   const navigate = useNavigate()
 
@@ -15,12 +14,12 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     const user = await login(email, password)
-    if ( user ) {
-    console.log(user)
-   
-    navigate('/main', {
-      replace: true
-    })
+    if (user) {
+      console.log(user)
+
+      navigate('/main', {
+        replace: true
+      })
     }
   }
 
