@@ -2,26 +2,26 @@ import React, { useState } from 'react'
 import { Input, Container, Button, Center, Image, Text, Link, Flex } from '@chakra-ui/react'
 import logo from '../../assets/logo.png';
 import { login } from '../../firebase';
-import { useDispatch } from "react-redux";
-import { login as loginHandle } from "../../store/auth";
 import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 
 
-  //const navigate = useNavigate()
-  //const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault()
     const user = await login(email, password)
+    if ( user ) {
     console.log(user)
-    //dispatch(loginHandle(user))
-    //navigate('/main', {
-      //replace: true
-    //})
+   
+    navigate('/main', {
+      replace: true
+    })
+    }
   }
 
   return (
