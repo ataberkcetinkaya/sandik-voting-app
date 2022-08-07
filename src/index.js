@@ -23,7 +23,7 @@ const theme = extendTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-    <Provider>
+    <Provider /* store={store} */ >
         <BrowserRouter>
             <ChakraProvider theme={theme}>
                 <App />
