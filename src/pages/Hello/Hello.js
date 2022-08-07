@@ -1,13 +1,13 @@
 import React from 'react';
 // Context
-import { useStateValue } from '../../context/provider';
+import { useApp } from '../../context/provider';
 import { actionTypes } from '../../context/reducer';
 // Chakra UI
 import { Button, Heading, Link } from '@chakra-ui/react';
 
 const Hello = () => {
   // Context içerisinden değerimizi aldık
-  const { state, dispatch } = useStateValue();
+  const { state, dispatch } = useApp();
   return (
     <>
       <Heading>{state.text}</Heading>
