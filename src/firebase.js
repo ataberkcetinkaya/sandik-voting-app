@@ -41,6 +41,7 @@ export const logout = async () => {
     } catch (error) {
         toast.error(error.message);
     }
+   
 
 }
 export default app

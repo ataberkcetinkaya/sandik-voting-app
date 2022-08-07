@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import { Input, Container, Button, Center, Image, Text, Link, Flex } from '@chakra-ui/react'
 import logo from '../../assets/logo.png';
+import { login } from '../../firebase';
+import { useDispatch } from "react-redux";
+import { login as loginHandle } from "../../store/auth";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 
+
+  //const navigate = useNavigate()
+  //const dispatch = useDispatch()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = () => {
-    console.log(email + ' - ' + password)
-    setEmail('');
-    setPassword('')
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const user = await login(email, password)
+    console.log(user)
+    //dispatch(loginHandle(user))
+    //navigate('/main', {
+      //replace: true
+    //})
   }
 
   return (
@@ -23,10 +34,10 @@ const Login = () => {
           <Flex direction="column" alignItems="center">
             <Input w='300px' type='email' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
             <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
-            <Button colorScheme='red' color='white' size='md'>
+            <Button type="submit" disabled={!email || !password} colorScheme='red' color='white' size='md'>
               Giriş Yap
             </Button>
-            </Flex>
+          </Flex>
           <Center>
             <Text mt={5} as='sub' fontSize='sm' color='black'>
               Yoksa sen sandik platformuna üye değil misin ? Hemen <Link color='red' fontWeight='bold' href='/register'>

@@ -8,6 +8,8 @@ import Provider from './context/provider';
 // Chakra
 import { ChakraProvider } from '@chakra-ui/react';
 import { extendTheme } from "@chakra-ui/react"
+import store from './store';
+
 
 const theme = extendTheme({
     colors: {
@@ -21,7 +23,7 @@ const theme = extendTheme({
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-    <Provider >
+    <Provider>
         <BrowserRouter>
             <ChakraProvider theme={theme}>
                 <App />

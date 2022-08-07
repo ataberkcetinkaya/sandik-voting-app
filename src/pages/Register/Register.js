@@ -13,14 +13,15 @@ export default function Register() {
   const handleSubmit = async e => {
     e.preventDefault() 
     const user = await register(email, password)
-    console.log(user)
+    
   }
   return (
     <form onSubmit={handleSubmit}>
+   
       <Center h='800px'>
         <Container maxW='300px' color='black'>
           <Center>
-            <Image boxSize='170px' src={logo}></Image>
+            <Image boxSize="170px" src={logo}></Image>
           </Center>
           <Input border='2px' borderColor='brand.grayBlack' type='text' value={userName} placeholder='Kullanıcı Adı' mt={4} mb={4} onChange={e => setUserName(e.target.value)} />
           <Input border='2px' borderColor='brand.grayBlack' type='text' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
@@ -31,7 +32,7 @@ export default function Register() {
               Kayıt Ol
             </Button>
           </Center>
-          <Text fontSize='sm' mt={4} color=''>
+          <Text mt={5} as='sub' fontSize='sm' color='black' >
             Hesabın zaten var mı ? O zaman <Link color="red" href='/login'>Giriş Yap</Link>
           </Text>
         </Container>
