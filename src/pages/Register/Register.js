@@ -2,7 +2,6 @@ import { Button, Center, Container, Image, Input, Text, Link } from "@chakra-ui/
 import { React, useState } from "react"
 import { register } from "../../firebase"
 import logo from '../../assets/logo.png';
-import HeaderToHome from "../../components/helloComponents/HeaderToHome";
 
 export default function Register() {
 
@@ -12,18 +11,14 @@ export default function Register() {
   const [againPassword, setAgainPassword] = useState('')
 
   const handleSubmit = async e => {
-    e.preventDefault() 
+    e.preventDefault()
     const user = await register(email, password)
-    
+
   }
   return (
     <form onSubmit={handleSubmit}>
-    <HeaderToHome />
       <Center h='800px'>
         <Container maxW='300px' color='black'>
-          <Center>
-            <Image boxSize="170px" src={logo}></Image>
-          </Center>
           <Input border='2px' type='text' value={userName} placeholder='Kullanıcı Adı' mt={4} mb={4} onChange={e => setUserName(e.target.value)} />
           <Input border='2px' type='text' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
           <Input border='2px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
@@ -40,4 +35,4 @@ export default function Register() {
       </Center>
     </form>
   )
-  }
+}

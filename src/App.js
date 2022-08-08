@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 // Router
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
+import { Header } from './components/appComponents';
 
 const App = () => {
 
@@ -13,20 +14,23 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-      if (!user && location.pathname !== '/login' && location.pathname !== '/register') {
-          navigate('/')
-      } else if (user && (location.pathname === '/login' || '/register')) {
-          navigate('/main')
-      }
+    if (!user && location.pathname !== '/login' && location.pathname !== '/register') {
+      navigate('/')
+    } else if (user && (location.pathname === '/login' || '/register')) {
+      navigate('/main')
+    }
   }, [user])
 
   return (
-    <Routes>
+    <>
+      <Header />
+      <Routes>
         <Route path="/" element={<Hello />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/main" element={<Main />} />
-    </Routes>
+      </Routes>
+    </>
   );
 };
 
