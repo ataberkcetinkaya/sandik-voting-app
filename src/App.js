@@ -18,7 +18,7 @@ const App = () => {
       } else if (user && (location.pathname === '/login' || '/register')) {
           navigate('/main')
       }
-  }, [])
+  }, [user])
 
   return (
     <Routes>
