@@ -2,6 +2,7 @@ import { Button, Center, Container, Image, Input, Text, Link } from "@chakra-ui/
 import { React, useState } from "react"
 import { register } from "../../firebase"
 import logo from '../../assets/logo.png';
+import HeaderToHome from "../../components/helloComponents/HeaderToHome";
 
 export default function Register() {
 
@@ -17,7 +18,7 @@ export default function Register() {
   }
   return (
     <form onSubmit={handleSubmit}>
-   
+    <HeaderToHome />
       <Center h='800px'>
         <Container maxW='300px' color='black'>
           <Center>
