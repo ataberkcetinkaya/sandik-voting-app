@@ -15,7 +15,8 @@ const Header = (props) => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding={6}
+      paddingBlock={6}
+      paddingInline={10}
       color="black"
     >
       <Flex align="center" justify='center' mr={5}>
