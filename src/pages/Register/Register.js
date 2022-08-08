@@ -23,17 +23,17 @@ export default function Register() {
           <Center>
             <Image boxSize="170px" src={logo}></Image>
           </Center>
-          <Input border='2px' borderColor='brand.grayBlack' type='text' value={userName} placeholder='Kullanıcı Adı' mt={4} mb={4} onChange={e => setUserName(e.target.value)} />
-          <Input border='2px' borderColor='brand.grayBlack' type='text' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
-          <Input border='2px' borderColor='brand.grayBlack' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
-          <Input border='2px' borderColor='brand.grayBlack' type='password' value={againPassword} mb={4} placeholder='Şifre Tekrarı' onChange={e => setAgainPassword(e.target.value)} />
+          <Input border='2px' type='text' value={userName} placeholder='Kullanıcı Adı' mt={4} mb={4} onChange={e => setUserName(e.target.value)} />
+          <Input border='2px' type='text' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
+          <Input border='2px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
+          <Input border='2px' type='password' value={againPassword} mb={4} placeholder='Şifre Tekrarı' onChange={e => setAgainPassword(e.target.value)} />
           <Center>
             <Button type="submit" disabled={!email || !password || !userName || !againPassword} colorScheme='red' size='md'>
               Kayıt Ol
             </Button>
           </Center>
           <Text mt={5} as='sub' fontSize='sm' color='black' >
-            Hesabın zaten var mı ? O zaman <Link color="red" href='/login'>Giriş Yap</Link>
+            Hesabın zaten var mı ? O zaman <Link color="red" fontWeight='bold' href='/login'>Giriş Yap</Link>
           </Text>
         </Container>
       </Center>

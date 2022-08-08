@@ -39,7 +39,7 @@ const Login = () => {
           </Flex>
           <Center>
             <Text mt={5} as='sub' fontSize='sm' color='black'>
-              Yoksa sen sandik platformuna üye değil misin ? Hemen <Link color='red' fontWeight='bold' href='/register'>
+              Yoksa sen sandık platformuna üye değil misin ? Hemen <Link color='red' fontWeight='bold' href='/register'>
                 Kayıt Ol
               </Link>
             </Text>
