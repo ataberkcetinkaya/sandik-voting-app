@@ -1,14 +1,18 @@
-import React from 'react';
-// Chakra UI
-import { Button, Heading, Link } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react'
+import React from 'react'
+import { Header } from '../../components/helloComponents'
 
 const Hello = () => {
   return (
     <>
-      <Link href='/register'>Kayıt Ol</Link>
-      <Link href='/login'>Giriş Yap</Link>
+      <Header />
+      <Container>
+      <Heading fontStyle='italic'>
+        Çok Yakında Sizlerleyiz...
+      </Heading>
+      </Container>
     </>
-  );
-};
+  )
+}
 
-export default Hello;
+export default Hello
