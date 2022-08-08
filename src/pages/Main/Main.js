@@ -20,7 +20,7 @@ const Main = () => {
   return (
     <Grid >
       <Text >
-        Oturumun Açık (User.email)
+        Oturumun Açık {user.email}
         <Button onClick={handleLogout} px={4} m={2} h={8} as='button' borderRadius='md' bg='blue.500' align='center'>Çıkış Yap</Button>
       </Text>
     </Grid>
