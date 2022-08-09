@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Input, Container, Button, Center, Image, Text, Link, Flex } from '@chakra-ui/react'
-import logo from '../../assets/logo.png';
 import { login } from '../../firebase';
 import { useNavigate } from "react-router-dom";
+import useLogin from '../../assets/useLogin.png';
 
 const Login = () => {
 
@@ -25,9 +25,12 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Center h='800px'>
+      <Center h='400px'>
         <Container color='black'>
           <Flex direction="column" alignItems="center">
+            <Image boxSize='120px' mb={4} src={useLogin} />
+            <Text lineHeight='110%' mb={8} as='sub' fontSize='sm' color='black'>
+              Size özel alana girmek ve Sandık'ta oylamak için lütfen giriş yapın </Text>
             <Input w='300px' type='email' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
             <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
             <Button type="submit" disabled={!email || !password} colorScheme='red' color='white' size='md'>
