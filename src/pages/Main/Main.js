@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import { Grid, Text } from '@chakra-ui/react'
-import { useSelector } from 'react-redux'
+import { Grid } from '@chakra-ui/react' 
 
 const Main = () => {
-  const { user } = useSelector(state => state.auth)
+
 
  
 
@@ -12,9 +11,7 @@ const Main = () => {
 
 
       <Grid >
-        <Text >
-          Oturumun Açık {user.displayName}
-        </Text>
+        
       </Grid>
   </>
 

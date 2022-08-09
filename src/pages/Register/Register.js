@@ -3,7 +3,6 @@ import { React, useState } from "react"
 import { register, auth, update } from "../../firebase"
 import sign from '../../assets/sign.png';
 import { useDispatch, useSelector } from "react-redux";
-
 import { login } from "../../store/auth/authSlice"
 
 export default function Register() {

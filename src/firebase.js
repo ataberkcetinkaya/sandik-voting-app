@@ -52,7 +52,6 @@ export const logout = async () => {
 export const update = async data => {
 try {
     await updateProfile(auth.currentUser, data)
-    toast.success('Kullanıcı İsmi Güncellendi')
     return true
 } catch (error) {
     toast.error(error.message);
