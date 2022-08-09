@@ -14,7 +14,8 @@ const theme = extendTheme({
   colors: {
     brand: {
       grayBlack: "#333333",
-      theRed: "#CE1B31"
+      theRed: "#CE1B31",
+      textRed: "#EF0202"
     },
   },
 })
