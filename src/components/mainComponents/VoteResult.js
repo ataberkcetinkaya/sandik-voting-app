@@ -1,97 +1,91 @@
 import { ChatIcon, LinkIcon } from '@chakra-ui/icons'
-import { Box, CircularProgress, CircularProgressLabel, Link, Text } from '@chakra-ui/react'
+import { Box, Center, CircularProgress, CircularProgressLabel, Container, Flex, HStack, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 
 const VoteResult = () => {
     return (
-        <Box position="absolute" left={750} w="420px" h="320px" borderRadius='10' border='1px' borderColor='gray.200'>
-            <Text
-                fontSize='16px' mt={3} ml={5} mr={1} >
-                <b>Sonraki seçimde oyunuzu hangi partiye vermeyi düşünüyorsunuz ?</b>
-            </Text>
-            <Box
-                position="absolute"
-                top="70px"
-                left="19px"
-                w="96px"
-                h=" 42px"
-                as='button' borderRadius='md' bg='gray.200' color='black' px={4}>
-                Label
+        <Center mt={4}>
+            <Box w="420px" h="340px" borderRadius='10' border='1px' borderColor='gray.400'>
+                <Text
+                    fontSize='16px' mt={3} ml={5} mr={1} >
+                    <b>Sonraki seçimde oyunuzu hangi partiye vermeyi düşünüyorsunuz ?</b>
+                </Text>
+
+                <Container mt={5}>
+                    <HStack>
+                        <SimpleGrid columns={2} spacingX='210px'>
+                            <VStack >
+                                <Box
+                                    w="96px"
+                                    h=" 48px"
+                                    as='button' borderRadius='md' bg='gray.200' color='black' px={4}>
+                                    Label
+                                </Box>
+                                <Box
+                                    w="96px"
+                                    h=" 48px"
+                                    as='button' borderRadius='md' bg='gray.200' color='black' px={4}>
+                                    Label
+                                </Box>
+                                <Box
+                                    w="96px"
+                                    h=" 48px"
+                                    as='button' borderRadius='md' bg='gray.200' color='black' px={4} >
+                                    Label
+                                </Box>
+                                <Box
+                                    w="96px"
+                                    h=" 48px"
+                                    as='button' borderRadius='md' bg='gray.200' color='black' px={4}>
+                                    Label
+                                </Box>
+                            </VStack>
+
+                            <VStack>
+                                <CircularProgress
+                                    value={80}
+                                    color='brand.theRed'
+                                    thickness='8px'>
+                                    <CircularProgressLabel>%</CircularProgressLabel>
+                                </CircularProgress>
+                                <CircularProgress
+                                    value={50}
+                                    color='brand.theRed'
+                                    thickness='8px'>
+                                    <CircularProgressLabel>%</CircularProgressLabel>
+                                </CircularProgress>
+                                <CircularProgress
+                                    value={80}
+                                    color='brand.theRed'
+                                    thickness='8px'>
+                                    <CircularProgressLabel>%</CircularProgressLabel>
+                                </CircularProgress>
+                                <CircularProgress
+                                    value={80}
+                                    color='brand.theRed'
+                                    thickness='8px'>
+                                    <CircularProgressLabel>%</CircularProgressLabel>
+                                </CircularProgress>
+                            </VStack>
+                        </SimpleGrid>
+                    </HStack>
+
+                    <SimpleGrid columns={2} spacingX='75px' mt={3} ml={3}  >
+
+                        <HStack>
+                            <Text><b>8</b></Text>
+                            <ChatIcon w="22px" h="22px" />
+                        </HStack>
+
+                        <Text
+                            w={200}
+                            fontSize='12px'>
+                            <Link color='brand.theRed'>Mert</Link>, tarafından oluşturuldu</Text>
+                    </SimpleGrid>
+                </Container>
             </Box>
-            <Box
-                position="absolute"
-                top="120px"
-                left="19px"
-                w="96px"
-                h=" 42px"
-                as='button' borderRadius='md' bg='gray.200' color='black' px={4}>
-                Label
-            </Box>
-            <Box
-                position="absolute"
-                top="170px"
-                left="19px"
-                w="96px"
-                h=" 42px"
-                as='button' borderRadius='md' bg='gray.200' color='black' px={4} >
-                Label
-            </Box>
-            <Box
-                position="absolute"
-                top="220px"
-                left="19px"
-                w="96px"
-                h=" 42px"
-                as='button' borderRadius='md' bg='gray.200' color='black' px={4}>
-                Label
-            </Box>
-            <CircularProgress
-                position="absolute"
-                right="50px"
-                top="220px"
-                value={80}
-                color='brand.theRed'
-                thickness='8px'>
-                <CircularProgressLabel>%</CircularProgressLabel>
-            </CircularProgress>
-            <CircularProgress
-                position="absolute"
-                right="50px"
-                top="170px"
-                value={80}
-                color='brand.theRed'
-                thickness='8px'>
-                <CircularProgressLabel>%</CircularProgressLabel>
-            </CircularProgress>
-            <CircularProgress
-                position="absolute"
-                right="50px"
-                top="120px"
-                value={80}
-                color='brand.theRed'
-                thickness='8px'>
-                <CircularProgressLabel>%</CircularProgressLabel>
-            </CircularProgress>
-            <CircularProgress
-                position="absolute"
-                right="50px"
-                top="70px"
-                value={80}
-                color='brand.theRed'
-                thickness='8px'>
-                <CircularProgressLabel>%</CircularProgressLabel>
-            </CircularProgress>
-            <Text
-                position="absolute"
-                fontSize='12px'
-                right="15px"
-                bottom="10px">
-                <Link color='brand.theRed'>Mert</Link>, tarafından oluşturuldu</Text>
-            <Link>
-                <ChatIcon position="absolute" w="22px" h="22px" left="40px"
-                    bottom="10px" />
-            </Link>
-        </Box>
+        </Center>
+
     )
 }
 
