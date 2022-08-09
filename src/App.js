@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/appComponents';
+import  { Toaster } from 'react-hot-toast';
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
 
   return (
     <>
+    <Toaster/>
       <Header />
       <Routes>
         <Route path="/" element={<Hello />} />

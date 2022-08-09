@@ -56,7 +56,7 @@ const Header = () => {
             {({ isOpen }) => (
               <>
                 <MenuButton isActive={isOpen} as={Button} rightIcon={<TriangleDownIcon />}>
-                  {isOpen ? 'Kapat' : user.email}
+                  {isOpen ? 'Kapat' : user.displayName}
                 </MenuButton>
                 <MenuList>
                   <MenuItem>Oylama Oluştur</MenuItem>

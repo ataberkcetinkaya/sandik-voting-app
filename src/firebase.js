@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import toast from 'react-hot-toast';
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
@@ -14,17 +14,22 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig); // Buraya kadar olan kısım firebaseden gelen kodlar
-const auth = getAuth();
+export const auth = getAuth();
+const user = auth.currentUser;  
+
+  
 
 // email ve password bilgisini alacağımız fonksiyon
 export const register = async (email, password) => {
     try {
         const { user } = await createUserWithEmailAndPassword(auth, email, password)
+        
         return user
     } catch (error) {
         toast.error(error.message);
     }
 }
+
 
 export const login = async (email, password) => {
     try {
@@ -44,9 +49,26 @@ export const logout = async () => {
     }
 }
 
+export const update = async data => {
+try {
+    await updateProfile(auth.currentUser, data)
+    toast.success('Kullanıcı İsmi Güncellendi')
+    return true
+} catch (error) {
+    toast.error(error.message);
+}    
+}
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        store.dispatch(loginHandle(user))
+
+
+        store.dispatch(loginHandle({
+            displayName: user.displayName,
+            email: user.email,
+            emailVerified: user.emailVerified,
+            uid: user.uid
+        }))
     } else {
         store.dispatch(logoutHandle(user))
     }
