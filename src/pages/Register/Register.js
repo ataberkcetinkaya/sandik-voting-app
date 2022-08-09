@@ -1,18 +1,31 @@
 import { Button, Center, Container, Image, Input, Text, Link, Flex } from "@chakra-ui/react"
 import { React, useState } from "react"
-import { register } from "../../firebase"
+import { register, auth, update } from "../../firebase"
 import sign from '../../assets/sign.png';
+import { useDispatch, useSelector } from "react-redux";
+
+import { login } from "../../store/auth/authSlice"
 
 export default function Register() {
-
+  const dispatch = useDispatch()
+  const {user} = useSelector(state => state.auth)
+  const [displayName, setDisplayName] = useState(user.displayName || user.email)
   const [email, setEmail] = useState('')
-  const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
   const [againPassword, setAgainPassword] = useState('')
 
   const handleSubmit = async e => {
     e.preventDefault()
     const user = await register(email, password)
+    await update({
+      displayName
+  })
+  dispatch(login({
+      displayName: auth.currentUser.displayName,
+      email: auth.currentUser.email,
+      emailVerified: auth.currentUser.emailVerified,
+      uid: auth.currentUser.uid
+      }))
     
 
   }
