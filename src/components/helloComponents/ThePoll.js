@@ -1,7 +1,6 @@
-import { Box, Center, Checkbox, Container, Flex, HStack, Image, Link, Text } from '@chakra-ui/react'
+import { EmailIcon, StarIcon } from '@chakra-ui/icons'
+import { Box, Center, Checkbox, Container, Flex, HStack, Icon, Image, Link, Text } from '@chakra-ui/react'
 import React from 'react'
-import like from '../../assets/like.png'
-import comment from '../../assets/comment.png'
 
 const ThePoll = () => {
   return (
@@ -43,10 +42,11 @@ const ThePoll = () => {
            <HStack >
                 <Flex mt={7} ml={5} flex='1'>
                     <Text><b>34</b></Text>
-                    <Image ml={2} src={like} height='22px' width='22px' alt='logo'/>
+                    <Icon ml={2} mt={0.5} as={StarIcon} w={5} h={5} color='yellow.400'/>
 
                     <Text ml={2}><b>12</b></Text>
-                    <Image ml={2} src={comment} height='22px' width='22px' alt='logo'/>
+                    <Icon ml={2} mt={0.5} as={EmailIcon}w={5} h={5} color='blue.600'/>
+                    
                 </Flex>
                 <Flex >
                     <Text fontSize='12px' mt={7} mr={5}>
