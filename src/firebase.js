@@ -1,8 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { getFirestore, collection, addDoc, onSnapshot, doc, query, where } from "firebase/firestore";
 import toast from 'react-hot-toast';
+import Vote from "./pages/Main/Vote";
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
+import votes, { setVotes } from "./store/votes";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -15,6 +18,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig); // Buraya kadar olan kısım firebaseden gelen kodlar
 export const auth = getAuth();
+export const db = getFirestore(app);
 const user = auth.currentUser;  
 
   
@@ -60,16 +64,31 @@ try {
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-
-
         store.dispatch(loginHandle({
             displayName: user.displayName,
             email: user.email,
             emailVerified: user.emailVerified,
             uid: user.uid
         }))
+        onSnapshot(query(collection(db, "votes"), where('uid', '==', auth.currentUser.uid)), (doc) => {
+            store.dispatch(
+              setVotes
+              (
+                  doc.docs.reduce((votes, vote) => [...votes, {...vote.data(), displayName: vote.displayName}], [])
+               ))
+          });
+
+        
     } else {
         store.dispatch(logoutHandle(user))
     }
 })
+
+
+export const addVote = async data => {
+   const result = await addDoc(collection(db, 'votes'), data)
+   console.log(result)
+}
+
+
 export default app

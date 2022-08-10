@@ -1,4 +1,4 @@
-import { ChatIcon, LinkIcon } from '@chakra-ui/icons'
+import { ChatIcon } from '@chakra-ui/icons'
 import { Box, Center, CircularProgress, CircularProgressLabel, Container, Flex, HStack, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 
