@@ -8,7 +8,22 @@ import Vote from '../Main/Vote'
 
 const Comments = () => {
   
+
+  
+  const [comment, setcomment] = useState({
+    comments: ' '
+  })
+
  
+
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  await addComment({
+    comment: " "
+})
+console.log({comment})
+ }
+
   return (
     <Center>
       <SimpleGrid columns={2} spacingX='150px'>
@@ -31,13 +46,13 @@ const Comments = () => {
             <FormControl>
               <Select variant='filled' mt={7} placeholder='Lütfen Anket Seçimi Yapın'>
               <option>
-             
+            
                 </option>
                   </Select>
             </FormControl>
-            <Textarea type='text'  mt={5} h={20} size='md' variant='filled' placeholder='Yorumunuzu Giriniz..' />
+            <Textarea type='text' value={comment} onChange={e => setcomment(e.target.value)} mt={5} h={20} size='md' variant='filled' placeholder='Yorumunuzu Giriniz..' />
           </VStack>
-          <Button type='submit' left='450px' mt={3} colorScheme='red' color='white' >Yorumu Gönder</Button>
+          <Button type='submit' onClick={handleSubmit} left='450px' mt={3} colorScheme='red' color='white' >Yorumu Gönder</Button>
          
             
         
