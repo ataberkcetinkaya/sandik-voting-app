@@ -1,13 +1,14 @@
 import { Box, Button, Center, Divider, FormControl, List, ListItem, Select, SimpleGrid, Text, Textarea, VStack } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react'
-import { addComment, db, update } from '../../firebase'
+import { addComment, db, update,getComments } from '../../firebase'
 import { useSelector } from 'react-redux'
 import Vote from '../Main/Vote'
 
 
 const Comments = () => {
   const { votes } = useSelector(state => state.votes)
+  const { comments } = useSelector(state => state.comments)
   // const [votes, setVotes] = useState([{
   //   head: 'deneme',
   //   uid:'asdad'
@@ -21,15 +22,20 @@ const Comments = () => {
 
  const handleSubmit = async (e) => {
   e.preventDefault();
-  await addComment({
-    comment: comment,
-    voteid:voteid
-})
-console.log({comment})
+    await addComment({
+      comment: comment,
+      voteid:voteid
+  })
+  console.log({comment})
  }
 
- const ChangeSelector= (event)=>{
+ const ChangeSelector=  (event)=>{
   setvoteid(event.target.value);
+  getComments({
+    voteid:event.target.value
+  }) 
+
+  
   console.log(event.target.value);
  }
 
@@ -46,7 +52,10 @@ console.log({comment})
             <Divider mt={2} boxShadow='red-lg' p='1' spacing='8' rounded='xl' bg='red' />
           <List mt={7} spacing={3}>
             <ListItem>
-              <Box w={250} borderRadius={5} bg='gray.500'> <Text ml={2}>asdasdas</Text></Box>
+            {comments.map((commentdata) => (
+                
+                <Box w={250} borderRadius={5} bg='gray.500'> <Text ml={2}>{commentdata.comment}</Text></Box>
+            ))}
             </ListItem>
           </List>
         </Box>
