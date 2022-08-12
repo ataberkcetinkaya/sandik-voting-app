@@ -80,7 +80,7 @@ onSnapshot(query(collection(db, "votes")), (doc) => {
     store.dispatch(
         setVotes
             (
-                doc.docs.reduce((votes, vote) => [...votes, { ...vote.data(), displayName: vote.displayName }], [])
+                doc.docs.reduce((votes, vote) => [...votes, { ...vote.data()}], [])
             ))
 });
 
