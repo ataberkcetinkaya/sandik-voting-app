@@ -1,22 +1,8 @@
-import React, { useEffect } from 'react'
-import { Grid } from '@chakra-ui/react' 
+import React from 'react'
 
 const Main = () => {
-
-
- 
-
   return (
-<>
-
-
-      <Grid >
-        
-      </Grid>
-  </>
-
-
-  
+    <div>Main</div>
   )
 }
 

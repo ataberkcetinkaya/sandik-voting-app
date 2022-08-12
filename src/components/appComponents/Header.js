@@ -59,7 +59,7 @@ const Header = () => {
                   {isOpen ? 'Kapat' : user.displayName}
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>Oylama Oluştur</MenuItem>
+                  <MenuItem onClick={() => navigate('/create')}>Oylama Oluştur</MenuItem>
                   <MenuItem onClick={handleLogout}>Çıkış Yap</MenuItem>
                 </MenuList>
               </>
@@ -78,7 +78,7 @@ const Header = () => {
               _hover={{ bg: 'red.600', color: 'white' }}
               marginRight={5}
             >
-              Login
+              Üye Ol
             </Button>
           </Link>
           <Link to="/register">
@@ -86,7 +86,17 @@ const Header = () => {
               variant="outline"
               _hover={{ bg: 'red.600', color: 'white' }}
             >
-              Register
+              Giriş Yap
+            </Button>
+          </Link>
+        </Box>
+      )}
+
+      {(pathname === '/create') && (
+        <Box>
+          <Link to="/main">
+            <Button variant="outline" _hover={{ bg: 'red.600', color: 'white' }}>
+              Meydan
             </Button>
           </Link>
         </Box>
@@ -96,7 +106,7 @@ const Header = () => {
         <Box>
           <Link to="/">
             <Button variant="outline" _hover={{ bg: 'red.600', color: 'white' }}>
-              Home
+              Ana Sayfa
             </Button>
           </Link>
         </Box>
