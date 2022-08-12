@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Grid } from '@chakra-ui/react'
+import Vote from './Vote'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <>
+
+
+      <Grid >
+
+      </Grid>
+    </>
+
+
+
   )
 }
 
