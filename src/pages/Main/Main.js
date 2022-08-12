@@ -13,7 +13,7 @@ const Main = () => {
 
 
       <Grid >
-       <Create />
+       <Comments />
       </Grid>
   </>
 
