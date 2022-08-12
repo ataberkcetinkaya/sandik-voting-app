@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, where } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, updateDoc, arrayUnion } from "firebase/firestore";
 import toast from 'react-hot-toast';
 import Vote from "./pages/Main/Vote";
 import { store } from "./store";
@@ -93,6 +93,19 @@ export const addVote = async data => {
         toast.error(error.message);
     }
 }
+
+export const addComment = async data => {
+    try {
+        await updateDoc(votes, {
+            "Comment" : Comment
+            
+        });
+    } catch (error) {
+        toast.error(error.message);
+    }
+} 
+
+
 
 export const deleteVote = async id => {
     try {

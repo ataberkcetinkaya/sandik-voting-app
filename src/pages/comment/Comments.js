@@ -1,10 +1,32 @@
 import { Box, Button, Center, Divider, FormControl, List, ListItem, Select, SimpleGrid, Text, Textarea, VStack } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
-import React from 'react'
+import React, { useState } from 'react'
+import { addComment, db, update } from '../../firebase'
+import { useSelector } from 'react-redux'
+import Vote from '../Main/Vote'
+
 
 const Comments = () => {
+  
+  const { user } = useSelector(state => state.auth)
+  const { votes } = useSelector(state => state.votes)
+  const [vote] = useState({
+    votes
+  })
+  
+  const [comment, setcomment] = useState({
+    comments: ' '
+  })
 
+ 
 
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  await addComment({
+    comment: " "
+})
+console.log({comment})
+ }
 
   return (
     <Center>
@@ -23,16 +45,22 @@ const Comments = () => {
         </Box>
         <Box w={600} h={600}>
           <VStack>
-            <Text fontSize='4xl'> <b> Anket Yorumları </b></Text>
+            <Text  fontSize='4xl'> <b> Anket Yorumları </b></Text>
             <Divider  boxShadow='red-lg' p='1' spacing='8' rounded='xl' bg='red' />
             <FormControl>
               <Select variant='filled' mt={7} placeholder='Lütfen Anket Seçimi Yapın'>
-                <option></option>
-              </Select>
+              <option>
+              {votes.map((votes) => (
+                        <ListItem key={vote.id}>
+                           <List> {votes.vote}</List>
+                        </ListItem>
+                    ))}
+                </option>
+                  </Select>
             </FormControl>
-            <Textarea mt={5} h={20} size='md' variant='filled' placeholder='Yorumunuzu Giriniz..' />
+            <Textarea type='text' value={comment} onChange={e => setcomment(e.target.value)} mt={5} h={20} size='md' variant='filled' placeholder='Yorumunuzu Giriniz..' />
           </VStack>
-          <Button left='450px' mt={3} colorScheme='red' color='white' >Yorumu Gönder</Button>
+          <Button type='submit' onClick={handleSubmit} left='450px' mt={3} colorScheme='red' color='white' >Yorumu Gönder</Button>
          
             
         
