@@ -12,7 +12,7 @@ const Main = () => {
 
 
       <Grid >
-       <Comments/>
+       <Comments />
       </Grid>
   </>
 
