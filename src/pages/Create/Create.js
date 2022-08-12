@@ -8,13 +8,17 @@ import {
   FormLabel,
   Input,
   Box,
-  RadioGroup,
-  HStack,
-  Radio,
   Select,
   Button
 } from '@chakra-ui/react';
 import { addVote } from '../../firebase';
+import { uuidv4 } from '@firebase/util';
+
+const sideTemp = {
+  count: 0,
+  result: 0,
+  text: ''
+}
 
 const Create = () => {
 
@@ -22,11 +26,14 @@ const Create = () => {
 
   // Oylama objemiz
   const [votingObj, setVotingObj] = useState({
+    id: uuidv4(),
     uid: user.uid,
     displayName: user.displayName,
     head: '',
+    totalCount: 0,
     sideCount: 2,
-    sidesArray: new Array(2).fill(''),
+    sidesArray: new Array(2).fill(sideTemp),
+    votedUserList: [],
     comments: []
   });
 
@@ -39,13 +46,14 @@ const Create = () => {
   // Taraf miktarı değişkeninin dinamik olarak değişmesini sağlar.
   const changeSideCount = (e) => {
     const newCount = Number(e.target.value);
-    const newArr = new Array(newCount).fill('');
+    const newArr = new Array(newCount).fill(sideTemp);
     setVotingObj({ ...votingObj, sideCount: newCount, sidesArray: newArr })
   }
 
+  // Seçenek yazısının değiştirilmesini sağlar
   const changeSideText = (e, index) => {
     const newArr = [...votingObj.sidesArray];
-    newArr[index] = e.target.value;
+    newArr[index].text = e.target.value;
     setVotingObj({ ...votingObj, sidesArray: newArr })
   }
 
@@ -53,7 +61,6 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addVote({ votingObj });
-    console.log(votingObj);
   }
 
   return (
@@ -79,7 +86,7 @@ const Create = () => {
                 <Input
                   mt='3'
                   key={index}
-                  value={votingObj.sidesArray[index]}
+                  value={votingObj.sidesArray[index].text}
                   onChange={(e) => changeSideText(e, index)}
                   placeholder={`${index + 1}. Yanıt`}
                   required />
