@@ -44,7 +44,7 @@ const Vote = () => {
                 <List>
                     {votes.map((votes) => (
                         <ListItem key={vote.uid}>
-                            {votes.vote} {user.displayName}
+                            {votes.vote} {votes.displayName}
 
                         </ListItem>
                     ))}

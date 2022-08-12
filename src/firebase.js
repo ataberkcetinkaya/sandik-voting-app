@@ -70,11 +70,11 @@ onAuthStateChanged(auth, (user) => {
             emailVerified: user.emailVerified,
             uid: user.uid
         }))
-        onSnapshot(query(collection(db, "votes"), where('uid', '==', auth.currentUser.uid)), (doc) => {
+        onSnapshot(query(collection(db, "votes")), (doc) => {
             store.dispatch(
               setVotes
               (
-                  doc.docs.reduce((votes, vote) => [...votes, {...vote.data(), displayName: vote.displayName}], [])
+                  doc.docs.reduce((votes, vote) => [...votes, {...vote.data()}], [])
                ))
           });
 
