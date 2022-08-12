@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, query, where } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, where } from "firebase/firestore";
 import toast from 'react-hot-toast';
 import Vote from "./pages/Main/Vote";
 import { store } from "./store";
@@ -19,15 +19,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig); // Buraya kadar olan kısım firebaseden gelen kodlar
 export const auth = getAuth();
 export const db = getFirestore(app);
-const user = auth.currentUser;  
+const user = auth.currentUser;
 
-  
+
 
 // email ve password bilgisini alacağımız fonksiyon
 export const register = async (email, password) => {
     try {
         const { user } = await createUserWithEmailAndPassword(auth, email, password)
-        
+
         return user
     } catch (error) {
         toast.error(error.message);
@@ -54,12 +54,12 @@ export const logout = async () => {
 }
 
 export const update = async data => {
-try {
-    await updateProfile(auth.currentUser, data)
-    return true
-} catch (error) {
-    toast.error(error.message);
-}    
+    try {
+        await updateProfile(auth.currentUser, data)
+        return true
+    } catch (error) {
+        toast.error(error.message);
+    }
 }
 
 onAuthStateChanged(auth, (user) => {
@@ -70,25 +70,36 @@ onAuthStateChanged(auth, (user) => {
             emailVerified: user.emailVerified,
             uid: user.uid
         }))
-        onSnapshot(query(collection(db, "votes")), (doc) => {
-            store.dispatch(
-              setVotes
-              (
-                  doc.docs.reduce((votes, vote) => [...votes, {...vote.data()}], [])
-               ))
-          });
+      
 
-        
     } else {
         store.dispatch(logoutHandle(user))
     }
 })
+onSnapshot(query(collection(db, "votes")), (doc) => {
+    store.dispatch(
+        setVotes
+            (
+                doc.docs.reduce((votes, vote) => [...votes, { ...vote.data(), displayName: vote.displayName }], [])
+            ))
+});
 
 
 export const addVote = async data => {
-   const result = await addDoc(collection(db, 'votes'), data)
-   console.log(result)
+    try {
+        const result = await addDoc(collection(db, 'votes'), data)
+        return result.id
+    } catch (error) {
+        toast.error(error.message);
+    }
 }
 
+export const deleteVote = async id => {
+    try {
+        await deleteDoc(doc(db, 'votes', id))
+    } catch (error) {
+        toast.error(error.message);
+    }
+}
 
 export default app
