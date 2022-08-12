@@ -96,7 +96,7 @@ export const addVote = async data => {
 
 export const addComment = async data => {
     try {
-        await updateDoc(votes, {
+        await updateDoc(doc(db, "votes"), {
             "Comment" : Comment
             
         });

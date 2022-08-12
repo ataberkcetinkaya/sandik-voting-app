@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { Box, Button, Center, Input, List, ListItem} from '@chakra-ui/react'
+import { Box, Button, Center, Flex, HStack, Input, List, ListItem, Text} from '@chakra-ui/react'
 import { addVote, deleteVote } from '../../firebase'
-=======
-import { Box, Button, ButtonGroup, Center, Flex, HStack, Input, Link, List, ListItem, MenuList, OrderedList, Text } from '@chakra-ui/react'
-import { addVote, getAuth, deleteVote } from '../../firebase'
->>>>>>> 5991be3af4e62198ac90d59e2807da1f7b876a51
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
