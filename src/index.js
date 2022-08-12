@@ -11,17 +11,32 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 
 const theme = extendTheme({
-  colors: {
-    brand: {
-      grayBlack: "#333333",
-      theRed: "#CE1B31",
-      textRed: "#EF0202"
-    },
-  },
+  styles: {
+    global: {
+      '*': {
+        color: 'white !important',
+      },
+      'body': {
+        backgroundColor: 'gray.800',
+        color: 'gray.50'
+      },
+      'input, select, option': {
+        backgroundColor: 'transparent',
+        color: 'white',
+        outline: 'none'
+      },
+      'input::placeholder': {
+        color: 'white',
+        fontStyle: 'italic'
+      },
+      'button, option': {
+        backgroundColor: 'gray.600 !important',
+      }
+    }
+  }
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
   <Provider store={store}>
     <BrowserRouter>

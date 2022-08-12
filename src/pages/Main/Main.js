@@ -8,7 +8,7 @@ const Main = () => {
 
 
       <Grid >
-
+        <Vote />
       </Grid>
     </>
 

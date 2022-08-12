@@ -36,17 +36,23 @@ const Create = () => {
   // Taraf miktarı değişkeninin dinamik olarak değişmesini sağlar.
   const changeSideCount = (e) => {
     const newCount = Number(e.target.value);
-    const newArr = new Array(newCount).fill('dfvdfv');
+    const newArr = new Array(newCount).fill('');
 
     setVotingObj({ ...votingObj, sideCount: newCount, sidesArray: newArr })
   }
 
+  const changeSideText = (e, index) => {
+    const newArr = [...votingObj.sidesArray];
+    newArr[index] = e.target.value;
+    setVotingObj({ ...votingObj, sidesArray: newArr })
+  }
+
   return (
-    <Container>
+    <Container p='9' backgroundColor='gray.700' borderRadius='10'>
       <Heading>Sende Bir Oylama Oluştur</Heading>
       <FormControl as='fieldset'>
         <FormLabel as='legend'>Oylama Başlığı</FormLabel>
-        <Input type="text" onChange={changeHead} placeholder='Örn: Yerel seçimlerde kime oy vermeyi düşnüyorsunuz ?' />
+        <Input type="text" border='2px' onChange={changeHead} placeholder='Örn: Yerel seçimlerde kime oy vermeyi düşnüyorsunuz ?' />
         <FormHelperText>Oylama başlığı aynı zamanda sizin ana temanızdır.</FormHelperText>
 
         <FormLabel as='legend'>Taraf Sayısı</FormLabel>
@@ -59,9 +65,15 @@ const Create = () => {
 
         <Box>
           {
-            new Array(4).fill('').map((side, index) => {
-              <h1>{side}</h1>
-            })
+            votingObj.sidesArray.map((item, index) => (
+              <Input
+                mt='3'
+                key={index}
+                value={votingObj.sidesArray[index]}
+                onChange={(e) => changeSideText(e, index)}
+                placeholder={`${index + 1}. Yanıt`}
+                required />
+            ))
           }
         </Box>
       </FormControl>
