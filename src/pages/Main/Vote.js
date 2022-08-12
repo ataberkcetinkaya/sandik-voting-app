@@ -1,11 +1,11 @@
 import { Box, Button, ButtonGroup, Center, Flex, Input, Link, List, ListItem, MenuList, OrderedList } from '@chakra-ui/react'
-import { addVote, getAuth } from '../../firebase'
+import { addVote, getAuth, deleteVote } from '../../firebase'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
 const Vote = () => {
 
-
+    
     const [vote, setVote] = useState('')
     const [answer1, setanswer1] = useState('')
     const [answer2, setanswer2] = useState('')
@@ -26,8 +26,16 @@ const Vote = () => {
             displayName: user.displayName
         })
         setVote('')
+        setanswer1('')
+        setanswer2('')
+        setanswer3('')
+        setanswer4('')
     }
 
+    const handleDelete = async id => {
+        await deleteVote(id)
+
+    }
     return (
 
 
@@ -43,22 +51,19 @@ const Vote = () => {
                 </form>
                 <List>
                     {votes.map((votes) => (
-                        <ListItem key={vote.uid}>
-                            {votes.vote} {user.displayName}
-
+                        <ListItem key={vote.id}>
+                            {votes.vote} <Button>{votes.displayName}</Button>
+                            <List>
+                                
+                                <Button>{votes.answer1}</Button>
+                                <Button>{votes.answer2}</Button>
+                                <Button>{votes.answer3}</Button>
+                                <Button>{votes.answer4}</Button>
+                                <Button onClick={() => handleDelete(vote.id)}>Sil</Button>
+                            </List>
                         </ListItem>
                     ))}
                 </List>
-                {votes.map((votes) => (
-                <Button>{votes.answer1}</Button> ))}
-                {votes.map((votes) => (
-                <Button>{votes.answer2}</Button> ))}
-                {votes.map((votes) => (
-                <Button>{votes.answer3}</Button> ))}
-                {votes.map((votes) => (
-                <Button>{votes.answer4}</Button> ))}
-
-                
             </Box>
         </Center>
 
