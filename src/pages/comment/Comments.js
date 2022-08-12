@@ -54,7 +54,7 @@ const Comments = () => {
             <ListItem>
             {comments.map((commentdata) => (
                 
-                <Box w={250} borderRadius={5} bg='gray.500'> <Text ml={2}>{commentdata.comment}</Text></Box>
+                <Box w={250} borderRadius={5} mt={3} bg='gray.500'> <Text ml={2}>{commentdata.comment}</Text></Box>
             ))}
             </ListItem>
           </List>
@@ -64,7 +64,7 @@ const Comments = () => {
             <Text  fontSize='4xl'> <b> Anket Yorumları </b></Text>
             <Divider  boxShadow='red-lg' p='1' spacing='8' rounded='xl' bg='red' />
             <FormControl>
-              <Select variant='filled' mt={7} placeholder='Lütfen Anket Seçimi Yapın' onChange={ChangeSelector}>
+              <Select variant='filled' mt={7} backgroundColor='black' placeholder='Lütfen Anket Seçimi Yapın' onChange={ChangeSelector}>
               {votes.map((votedata) => (
                 
                         <option value={votedata.votingObj.id}>
@@ -76,7 +76,7 @@ const Comments = () => {
               
                   </Select>
             </FormControl>
-            <Textarea type='text' value={comment} onChange={e => setcomment(e.target.value)} mt={5} h={20} size='md' variant='filled' placeholder='Yorumunuzu Giriniz..' />
+            <Textarea type='text' value={comment} onChange={e => setcomment(e.target.value)} mt={5} h={20} size='md' variant='filled' backgroundColor='black' placeholder='Yorumunuzu Giriniz..' />
           </VStack>
           <Button type='submit' onClick={handleSubmit} left='450px' mt={3} colorScheme='red' color='white' >Yorumu Gönder</Button>
 
