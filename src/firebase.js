@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, updateDoc, arrayUnion } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, updateDoc, arrayUnion, where } from "firebase/firestore";
 import toast from 'react-hot-toast';
 import Vote from "./pages/Main/Vote";
 import { store } from "./store";
@@ -70,19 +70,19 @@ onAuthStateChanged(auth, (user) => {
             emailVerified: user.emailVerified,
             uid: user.uid
         }))
-      
+        onSnapshot(query(collection(db, "votes")), (doc) => {
+            store.dispatch(
+                setVotes
+                    (
+                        doc.docs.reduce((votes, vote) => [...votes, { ...vote.data()}], [])
+                    ))
+        });
 
     } else {
         store.dispatch(logoutHandle(user))
     }
 })
-onSnapshot(query(collection(db, "votes")), (doc) => {
-    store.dispatch(
-        setVotes
-            (
-                doc.docs.reduce((votes, vote) => [...votes, { ...vote.data()}], [])
-            ))
-});
+
 
 
 export const addVote = async data => {
@@ -96,11 +96,13 @@ export const addVote = async data => {
 
 export const addComment = async data => {
     try {
-        await updateDoc(doc(db, "votes"), {
-            "Comment" : Comment
+        console.log(data);
+        await updateDoc(doc(db, "votes"),where ("id","==", data.voteid), {
+            Comment : ["deneme","deneme2" ]
             
         });
     } catch (error) {
+        console.log("hata:"+error.message);
         toast.error(error.message);
     }
 } 
