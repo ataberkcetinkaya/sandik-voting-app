@@ -1,11 +1,12 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, updateDoc, arrayUnion, where } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, updateDoc,setDoc, arrayUnion, where } from "firebase/firestore";
 import toast from 'react-hot-toast';
 import Vote from "./pages/Main/Vote";
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
 import votes, { setVotes } from "./store/votes";
+import comments, { setComments } from "./store/comment";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -78,12 +79,27 @@ onAuthStateChanged(auth, (user) => {
                     ))
         });
 
+        
+
     } else {
         store.dispatch(logoutHandle(user))
     }
 })
 
 
+export const getComments= data=>{
+    try{
+        onSnapshot(query(collection(db, "comments"),where("voteid","==",data.voteid)), (doc) => {
+            store.dispatch(
+                setComments
+                    (
+                        doc.docs.reduce((comments, comment) => [...comments, { ...comment.data()}], [])
+                    ))
+        });
+    }catch(error){
+        toast.error(error.message);
+    }
+}
 
 export const addVote = async data => {
     try {
@@ -96,15 +112,20 @@ export const addVote = async data => {
 
 export const addComment = async data => {
     try {
-        console.log(data);
-        await updateDoc(doc(db, "votes"),where ("id","==", data.voteid), {
-            Comment : ["deneme","deneme2" ]
+
+
+        await addDoc(collection(db, "comments"), {
             
-        });
-    } catch (error) {
-        console.log("hata:"+error.message);
-        toast.error(error.message);
-    }
+                comment: data.comment,
+                voteid: data.voteid
+                
+          });
+
+        } catch (error) {
+                 console.log("hata:"+error.message);
+                toast.error(error.message);
+           }
+        
 } 
 
 
