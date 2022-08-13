@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, query, where } from "firebase/firestore";
-import toast from 'react-hot-toast';
+import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, deleteDoc, query, where, getDoc } from "firebase/firestore";
+import toast, { useToasterStore } from 'react-hot-toast';
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
 import { getVotes } from "./store/vote/voteSlice";
@@ -112,6 +112,16 @@ export const addComment = async (data, docId) => {
         toast.error(error.message);
     }
 }
+
+// export const getComments = async (docId) => {
+//     try {
+//         const docRef = doc(db, 'votes', docId);
+//         const docSnap = await getDoc(docRef);
+//         return docSnap.data().comments;
+//     } catch (error) {
+//         toast.error(error.message);
+//     }
+// }
 
 // export const selectSide = async data => {
 //     try {

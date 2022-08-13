@@ -22,7 +22,6 @@ const Vote = () => {
                                     <Text fontSize={19} fontStyle='italic' fontWeight='bold'>{item.head} </Text>
                                 </Box>
                             </Flex>
-
                             <Flex justifyContent='space-between'>
                                 {
                                     item.sidesArray.map((item, index) => (

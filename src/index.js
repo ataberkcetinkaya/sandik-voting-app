@@ -20,10 +20,13 @@ const theme = extendTheme({
         backgroundColor: 'gray.800',
         color: 'gray.50'
       },
-      'input, select, option': {
-        backgroundColor: 'transparent',
+      'input, select, option, textarea': {
+        backgroundColor: 'gray.700',
         color: 'white',
         outline: 'none'
+      },
+      'input:hover': {
+        backgroundColor: 'none'
       },
       'input::placeholder': {
         color: 'white',

@@ -1,28 +1,35 @@
 import { Box, Button, Center, Divider, FormControl, List, ListItem, Select, SimpleGrid, Text, Textarea, VStack } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
 import React, { useState, useEffect } from 'react'
-import { addComment, db, update, getComments } from '../../firebase'
+import { addComment, getComments } from '../../firebase'
 import { useSelector } from 'react-redux'
 
 const Comments = () => {
   const { voteArray } = useSelector(state => state.vote);
   const { user } = useSelector(state => state.auth);
-  const { comments } = useSelector(state => state.comments);
+  const [comments, setComments] = useState([]);
 
   const [commentText, setcomment] = useState('');
   const [voteId, setVoteId] = useState('');
 
+  const getCurrentComments = () => voteArray.filter(item => item.id == voteId)[0].comments
+
+  useEffect(() => {
+    if (voteId) {
+      setComments(getCurrentComments());
+    }
+  }, [voteId,])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let commentArray = voteArray.filter(item => item.id == voteId)[0].comments;
+    let commentArray = getCurrentComments();
     const body = {
       text: commentText,
       displayName: user.displayName
     }
-
     commentArray = [...commentArray, body]
-
     await addComment(commentArray, voteId)
+    setComments(commentArray);
   }
 
   const changeSelector = (e) => {
@@ -32,7 +39,6 @@ const Comments = () => {
   return (
     <Center>
       <SimpleGrid columns={2} spacingX='150px'>
-
         <Box w={600} h={600}>
           <Text fontSize='4xl'>
             <ChatIcon color='red.500' />
@@ -41,7 +47,7 @@ const Comments = () => {
           <Divider mt={2} boxShadow='red-lg' p='1' spacing='8' rounded='xl' bg='red' />
           <List mt={7} spacing={3}>
             <ListItem>
-              {comments.map((item, index) => (
+              {comments && comments.map((item, index) => (
                 <Box key={index} w={250} borderRadius={5} mt={3} bg='gray.500'>
                   <Text ml={2}>{item.text}</Text>
                 </Box>
@@ -57,7 +63,8 @@ const Comments = () => {
             <FormControl>
               <Select
                 variant='filled' mt={7}
-                backgroundColor='black'
+                backgroundColor='gray.700'
+                _hover={{ background: 'gray.700' }}
                 placeholder='Lütfen Anket Seçimi Yapın'
                 onChange={changeSelector}>
 
@@ -69,12 +76,19 @@ const Comments = () => {
 
               </Select>
             </FormControl>
-            <Textarea type='text' value={commentText} onChange={e => setcomment(e.target.value)} mt={5} h={20} size='md' variant='filled' backgroundColor='black' placeholder='Yorumunuzu Giriniz..' />
+            <Textarea
+              type='text'
+              value={commentText}
+              onChange={e => setcomment(e.target.value)}
+              mt={5}
+              h={20}
+              size='md'
+              variant='filled'
+              backgroundColor='gray.700'
+              _focus={{ background: 'gray.700' }}
+              _hover={{ background: 'gray.700' }} placeholder='Yorumunuzu Giriniz..' />
           </VStack>
           <Button type='submit' onClick={handleSubmit} left='450px' mt={3} colorScheme='red' color='white' >Yorumu Gönder</Button>
-
-
-
         </Box>
 
       </SimpleGrid>

@@ -58,9 +58,10 @@ const Header = () => {
                 <MenuButton isActive={isOpen} as={Button} rightIcon={<TriangleDownIcon />}>
                   {isOpen ? 'Kapat' : user.displayName}
                 </MenuButton>
-                <MenuList backgroundColor='black'>
-                  <MenuItem mb={2} onClick={() => navigate('/create')}>Oylama Oluştur</MenuItem>
-                  <MenuItem onClick={handleLogout}>Çıkış Yap</MenuItem>
+                <MenuList backgroundColor='gray.600'>
+                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => navigate('/create')}>Oylama Oluştur</MenuItem>
+                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => navigate('/comments')}>Yorumlara Git</MenuItem>
+                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} onClick={handleLogout}>Çıkış Yap</MenuItem>
                 </MenuList>
               </>
             )}
@@ -92,7 +93,7 @@ const Header = () => {
         </Box>
       )}
 
-      {(pathname === '/create') && (
+      {((pathname === '/create') || (pathname === '/comments')) && (
         <Box>
           <Link to="/main">
             <Button variant="outline" _hover={{ bg: 'red.600', color: 'white' }}>

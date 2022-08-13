@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Hello, Login, Main, Register, Create } from './pages';
+import { Hello, Login, Main, Register, Create, Comments } from './pages';
 // Redux
 import { useSelector } from 'react-redux';
 // Router
@@ -17,9 +17,7 @@ const App = () => {
   useEffect(() => {
     if (!user && location.pathname !== '/login' && location.pathname !== '/register') {
       navigate('/')
-    } else if ((user
-      && ((location.pathname === '/login') || (location.pathname === '/register'))
-      || (user && location.pathname === '/'))) {
+    } else if ((user && location.pathname === '/login') || (user && location.pathname === '/register') || (user && location.pathname === '/')) {
       navigate('/main')
     }
   }, [user])
@@ -34,6 +32,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/main" element={<Main />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/comments" element={<Comments />} />
       </Routes>
     </>
   );
