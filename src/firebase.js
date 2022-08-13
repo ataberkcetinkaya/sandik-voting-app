@@ -4,8 +4,8 @@ import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, wh
 import toast from 'react-hot-toast';
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
-import votes, { setVotes } from "./store/votes";
-import comments, { setComments } from "./store/comment";
+import { getVotes } from "./store/vote/voteSlice";
+import { setComments } from "./store/comment";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -20,8 +20,6 @@ const app = initializeApp(firebaseConfig); // Buraya kadar olan kısım firebase
 export const auth = getAuth();
 export const db = getFirestore(app);
 const user = auth.currentUser;
-
-
 
 // email ve password bilgisini alacağımız fonksiyon
 export const register = async (email, password) => {
@@ -72,7 +70,7 @@ onAuthStateChanged(auth, (user) => {
         }))
         onSnapshot(query(collection(db, "votes")), (doc) => {
             store.dispatch(
-                setVotes
+                getVotes
                     (
                         doc.docs.reduce((votes, vote) => [...votes, { ...vote.data() }], [])
                     ))

@@ -17,9 +17,11 @@ import { uuidv4 } from '@firebase/util';
 
 
 const Create = () => {
+
   const { user } = useSelector(state => state.auth)
 
   const sideTemp = {
+    id: uuidv4(),
     count: 0,
     result: 0,
     text: ''
@@ -59,6 +61,7 @@ const Create = () => {
     for (let i = 0; i < newCount; i++) {
       newArr.push({ ...sideTemp })
     }
+    // const newArr = new Array(newCount).fill({ ...sideTemp });
     setVotingObj({ ...votingObj, sideCount: newCount, sidesArray: newArr })
   }
 
