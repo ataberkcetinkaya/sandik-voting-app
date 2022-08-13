@@ -5,8 +5,6 @@ import Vote from './Vote'
 const Main = () => {
   return (
     <>
-
-
       <Grid >
         <Vote />
       </Grid>

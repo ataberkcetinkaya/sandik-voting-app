@@ -14,15 +14,16 @@ import {
 import { addVote } from '../../firebase';
 import { uuidv4 } from '@firebase/util';
 
-const sideTemp = {
-  count: 0,
-  result: 0,
-  text: ''
-}
+
 
 const Create = () => {
-
   const { user } = useSelector(state => state.auth)
+
+  const sideTemp = {
+    count: 0,
+    result: 0,
+    text: ''
+  }
 
   // Oylama objemiz
   const [votingObj, setVotingObj] = useState({
@@ -32,10 +33,18 @@ const Create = () => {
     head: '',
     totalCount: 0,
     sideCount: 2,
-    sidesArray: new Array(2).fill(sideTemp),
+    sidesArray: [],
     votedUserList: [],
     comments: []
   });
+
+  useEffect(() => {
+    const newArr = [];
+    for (let i = 0; i < votingObj.sideCount; i++) {
+      newArr.push({ ...sideTemp })
+    }
+    setVotingObj({ ...votingObj, sidesArray: newArr })
+  }, [])
 
   // Başlığı Değiştirir
   const changeHead = (e) => {
@@ -46,7 +55,10 @@ const Create = () => {
   // Taraf miktarı değişkeninin dinamik olarak değişmesini sağlar.
   const changeSideCount = (e) => {
     const newCount = Number(e.target.value);
-    const newArr = new Array(newCount).fill(sideTemp);
+    const newArr = [];
+    for (let i = 0; i < newCount; i++) {
+      newArr.push({ ...sideTemp })
+    }
     setVotingObj({ ...votingObj, sideCount: newCount, sidesArray: newArr })
   }
 
@@ -54,6 +66,7 @@ const Create = () => {
   const changeSideText = (e, index) => {
     const newArr = [...votingObj.sidesArray];
     newArr[index].text = e.target.value;
+    console.log(votingObj);
     setVotingObj({ ...votingObj, sidesArray: newArr })
   }
 
