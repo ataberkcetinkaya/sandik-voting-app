@@ -14,14 +14,11 @@ import {
 import { addVote } from '../../firebase';
 import { uuidv4 } from '@firebase/util';
 
-
-
 const Create = () => {
 
   const { user } = useSelector(state => state.auth)
 
   const sideTemp = {
-    id: uuidv4(),
     count: 0,
     result: 0,
     text: ''
@@ -29,7 +26,6 @@ const Create = () => {
 
   // Oylama objemiz
   const [votingObj, setVotingObj] = useState({
-    id: uuidv4(),
     uid: user.uid,
     displayName: user.displayName,
     head: '',
@@ -76,7 +72,7 @@ const Create = () => {
   // Form gönderileceği zaman çalışır
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addVote({ votingObj });
+    await addVote({ ...votingObj });
   }
 
   return (
