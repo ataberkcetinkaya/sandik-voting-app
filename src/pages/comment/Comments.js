@@ -22,6 +22,7 @@ const Comments = () => {
       voteid: voteid
     })
     console.log({ comment })
+    setcomment (' ')
   }
 
   const ChangeSelector = (event) => {
@@ -29,7 +30,7 @@ const Comments = () => {
     getComments({
       voteid: event.target.value
     })
-
+    
 
     console.log(event.target.value);
   }
