@@ -123,11 +123,11 @@ export const addComment = async (data, docId) => {
 //     }
 // }
 
-// export const selectSide = async data => {
-//     try {
-//         const docRef = doc(db, "votes", "");
-//         // const result = await updateDoc(docRef)
-//     } catch (error) {
-//         toast.error(error.message);
-//     }
-// }
+export const selectSide = async (data) => {
+    try {
+        const docRef = doc(db, "votes", data.id);
+        await updateDoc(docRef, data);
+    } catch (error) {
+        toast.error(error.message);
+    }
+}

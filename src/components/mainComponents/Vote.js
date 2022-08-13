@@ -1,5 +1,5 @@
 import { Box, Button, Center, Flex, HStack, Input, List, ListItem, Text } from '@chakra-ui/react'
-import { addVote, deleteVote } from '../../firebase'
+import { addVote, deleteVote, selectSide } from '../../firebase'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
@@ -7,16 +7,36 @@ const Vote = () => {
     const { user } = useSelector(state => state.auth)
     const { voteArray } = useSelector(state => state.vote)
 
-    const handleClick = (e) => {
-        console.log(voteArray);
+    const cloneVote = () => {
+        let deepClone = JSON.parse(JSON.stringify(voteArray));
+        deepClone.defaultForm = true;
+        return deepClone;
+    }
+
+    const handleClick = async (voteIndex, sideIndex) => {
+        let newArr = cloneVote();
+        let currentVote = newArr[voteIndex];
+
+        currentVote.totalCount++;
+        currentVote.sidesArray[sideIndex].count++;
+
+        currentVote.sidesArray.forEach((item, index) => {
+            item.result = ((item.count / currentVote.totalCount) * 100).toFixed(1);
+        });
+
+        if (!currentVote.votedUserList.includes(user.displayName)) {
+            currentVote.votedUserList.push(user.displayName);
+        }
+
+        await selectSide(currentVote);
     }
 
     return (
         <Center maxWidth='700px' mx='auto'>
             <Box borderRadius='10' backgroundColor='gray.700'>
                 <List mt={6} display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
-                    {voteArray.map((item, index) => (
-                        <ListItem width='100%' p={4} key={index} mb={15} >
+                    {voteArray.map((item, voteIndex) => (
+                        <ListItem width='100%' p={4} key={voteIndex} mb={15} >
                             <Flex alignItems='center' mt={3} mb={8} justifyContent='space-between'>
                                 <Box flex='3'>
                                     <Text fontSize={19} fontStyle='italic' fontWeight='bold'>{item.head} </Text>
@@ -24,8 +44,8 @@ const Vote = () => {
                             </Flex>
                             <Flex justifyContent='space-between'>
                                 {
-                                    item.sidesArray.map((item, index) => (
-                                        <Button onClick={handleClick} value={index} key={index}>{item.text}</Button>
+                                    item.sidesArray.map((item, sideIndex) => (
+                                        <Button onClick={() => handleClick(voteIndex, sideIndex)} key={sideIndex}>{item.text}</Button>
                                     ))
                                 }
                             </Flex>

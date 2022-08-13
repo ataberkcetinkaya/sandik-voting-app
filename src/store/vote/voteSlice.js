@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    voteArray: []
+    voteArray: [],
 }
 
 const votesSlice = createSlice({
