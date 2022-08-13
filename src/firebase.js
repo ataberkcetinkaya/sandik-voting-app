@@ -102,34 +102,22 @@ export const addVote = async data => {
     }
 }
 
-export const selectSide = async data => {
-    try {
-        const docRef = doc(db, "votes", "");
-        // const result = await updateDoc(docRef)
-    } catch (error) {
-        toast.error(error.message);
-    }
-}
-
 export const addComment = async (data, docId) => {
     try {
         const docRef = doc(db, 'votes', docId);
         await updateDoc(docRef, {
-            votingObj: {
-                comments: data
-            }
+            comments: data
         })
     } catch (error) {
         toast.error(error.message);
     }
 }
 
-export const deleteVote = async id => {
-    try {
-        await deleteDoc(doc(db, 'votes', id))
-    } catch (error) {
-        toast.error(error.message);
-    }
-}
-
-export default app
+// export const selectSide = async data => {
+//     try {
+//         const docRef = doc(db, "votes", "");
+//         // const result = await updateDoc(docRef)
+//     } catch (error) {
+//         toast.error(error.message);
+//     }
+// }

@@ -1,42 +1,33 @@
 import { Box, Button, Center, Divider, FormControl, List, ListItem, Select, SimpleGrid, Text, Textarea, VStack } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { addComment, db, update, getComments } from '../../firebase'
 import { useSelector } from 'react-redux'
-import Vote from '../Main/Vote'
-import comment from '../../store/comment'
 
 const Comments = () => {
   const { voteArray } = useSelector(state => state.vote);
   const { user } = useSelector(state => state.auth);
   const { comments } = useSelector(state => state.comments);
 
-  const [commentText, setcomment] = useState('')
-  const [commentArray, setCommentArray] = useState([]);
+  const [commentText, setcomment] = useState('');
   const [voteId, setVoteId] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    let commentArray = voteArray.filter(item => item.id == voteId)[0].comments;
     const body = {
       text: commentText,
       displayName: user.displayName
     }
-    setCommentArray([...commentArray, body]);
 
-    await addComment({
-      data: commentArray,
-      docId: voteId
-    })
+    commentArray = [...commentArray, body]
+
+    await addComment(commentArray, voteId)
   }
 
-  const changeSelector = (event) => {
-    const { value } = event.target;
-    const currentComments = voteArray.filter(item => item.id == value)[0].comments;
-    console.log(currentComments);
+  const changeSelector = (e) => {
+    setVoteId(e.target.value);
   }
-
-  console.log({ votes: voteArray })
 
   return (
     <Center>
