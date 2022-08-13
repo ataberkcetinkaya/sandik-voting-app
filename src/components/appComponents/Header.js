@@ -58,8 +58,8 @@ const Header = () => {
                 <MenuButton isActive={isOpen} as={Button} rightIcon={<TriangleDownIcon />}>
                   {isOpen ? 'Kapat' : user.displayName}
                 </MenuButton>
-                <MenuList>
-                  <MenuItem onClick={() => navigate('/create')}>Oylama Oluştur</MenuItem>
+                <MenuList backgroundColor='black'>
+                  <MenuItem mb={2} onClick={() => navigate('/create')}>Oylama Oluştur</MenuItem>
                   <MenuItem onClick={handleLogout}>Çıkış Yap</MenuItem>
                 </MenuList>
               </>
@@ -72,7 +72,7 @@ const Header = () => {
         <Box
           mt={{ base: 4, md: 0 }}
         >
-          <Link to="/login">
+          <Link to="/register">
             <Button
               variant="outline"
               _hover={{ bg: 'red.600', color: 'white' }}
@@ -81,7 +81,7 @@ const Header = () => {
               Üye Ol
             </Button>
           </Link>
-          <Link to="/register">
+          <Link to="/login">
             <Button
               variant="outline"
               _hover={{ bg: 'red.600', color: 'white' }}

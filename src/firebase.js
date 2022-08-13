@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, where } from "firebase/firestore";
 import toast from 'react-hot-toast';
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
-import { getVotes } from "./store/vote/voteSlice";
+import votes, { setVotes } from "./store/votes";
+import comments, { setComments } from "./store/comment";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -69,19 +70,35 @@ onAuthStateChanged(auth, (user) => {
             emailVerified: user.emailVerified,
             uid: user.uid
         }))
+        onSnapshot(query(collection(db, "votes")), (doc) => {
+            store.dispatch(
+                setVotes
+                    (
+                        doc.docs.reduce((votes, vote) => [...votes, { ...vote.data() }], [])
+                    ))
+        });
+
 
 
     } else {
         store.dispatch(logoutHandle(user))
     }
 })
-onSnapshot(query(collection(db, "votes")), (doc) => {
-    store.dispatch(
-        getVotes
-            (
-                doc.docs.reduce((votes, vote) => [...votes, { ...vote.data() }], [])
-            ))
-});
+
+
+export const getComments = data => {
+    try {
+        onSnapshot(query(collection(db, "comments"), where("voteid", "==", data.voteid)), (doc) => {
+            store.dispatch(
+                setComments
+                    (
+                        doc.docs.reduce((comments, comment) => [...comments, { ...comment.data() }], [])
+                    ))
+        });
+    } catch (error) {
+        toast.error(error.message);
+    }
+}
 
 export const addVote = async data => {
     try {
@@ -91,6 +108,26 @@ export const addVote = async data => {
         toast.error(error.message);
     }
 }
+
+export const addComment = async data => {
+    try {
+
+
+        await addDoc(collection(db, "comments"), {
+
+            comment: data.comment,
+            voteid: data.voteid
+
+        });
+
+    } catch (error) {
+        console.log("hata:" + error.message);
+        toast.error(error.message);
+    }
+
+}
+
+
 
 export const deleteVote = async id => {
     try {

@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth/authSlice";
-import voteReducer from "./vote/voteSlice";
+import votes from "./votes";
+import comments from "./comment";
 
 export const store = configureStore({
-    reducer: {
-        auth: authReducer,
-        vote: voteReducer,
-    }
+        reducer: {
+                auth: authReducer,
+                votes,
+                comments
+
+        }
 })
