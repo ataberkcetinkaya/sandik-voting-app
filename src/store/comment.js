@@ -10,9 +10,7 @@ const comment = createSlice({
     reducers: {
         setComments: (state, action) => {
             state.comments = action.payload
-            console.log(action.payload);
         }
-       
     }
 })
 
