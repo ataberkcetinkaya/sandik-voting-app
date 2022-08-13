@@ -31,6 +31,9 @@ const theme = extendTheme({
       },
       'button, option': {
         backgroundColor: 'gray.600 !important',
+      },
+      'button:hover': {
+        opacity: '.8'
       }
     }
   }

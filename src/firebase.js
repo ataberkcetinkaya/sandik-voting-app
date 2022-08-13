@@ -1,12 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, updateDoc,setDoc, arrayUnion, where } from "firebase/firestore";
+import { getFirestore, collection, addDoc, onSnapshot, doc, deleteDoc, query, where } from "firebase/firestore";
 import toast from 'react-hot-toast';
-import Vote from "./pages/Main/Vote";
 import { store } from "./store";
 import { login as loginHandle, logout as logoutHandle } from "./store/auth/authSlice";
-import votes, { setVotes } from "./store/votes";
-import comments, { setComments } from "./store/comment";
+import { getVotes } from "./store/vote/voteSlice";
+import { setComments } from "./store/comment";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -21,8 +20,6 @@ const app = initializeApp(firebaseConfig); // Buraya kadar olan kısım firebase
 export const auth = getAuth();
 export const db = getFirestore(app);
 const user = auth.currentUser;
-
-
 
 // email ve password bilgisini alacağımız fonksiyon
 export const register = async (email, password) => {
@@ -73,13 +70,13 @@ onAuthStateChanged(auth, (user) => {
         }))
         onSnapshot(query(collection(db, "votes")), (doc) => {
             store.dispatch(
-                setVotes
+                getVotes
                     (
-                        doc.docs.reduce((votes, vote) => [...votes, { ...vote.data()}], [])
+                        doc.docs.reduce((votes, vote) => [...votes, { ...vote.data() }], [])
                     ))
         });
 
-        
+
 
     } else {
         store.dispatch(logoutHandle(user))
@@ -87,16 +84,16 @@ onAuthStateChanged(auth, (user) => {
 })
 
 
-export const getComments= data=>{
-    try{
-        onSnapshot(query(collection(db, "comments"),where("voteid","==",data.voteid)), (doc) => {
+export const getComments = data => {
+    try {
+        onSnapshot(query(collection(db, "comments"), where("voteid", "==", data.voteid)), (doc) => {
             store.dispatch(
                 setComments
                     (
-                        doc.docs.reduce((comments, comment) => [...comments, { ...comment.data()}], [])
+                        doc.docs.reduce((comments, comment) => [...comments, { ...comment.data() }], [])
                     ))
         });
-    }catch(error){
+    } catch (error) {
         toast.error(error.message);
     }
 }
@@ -115,18 +112,18 @@ export const addComment = async data => {
 
 
         await addDoc(collection(db, "comments"), {
-            
-                comment: data.comment,
-                voteid: data.voteid
-                
-          });
 
-        } catch (error) {
-                 console.log("hata:"+error.message);
-                toast.error(error.message);
-           }
-        
-} 
+            comment: data.comment,
+            voteid: data.voteid
+
+        });
+
+    } catch (error) {
+        console.log("hata:" + error.message);
+        toast.error(error.message);
+    }
+
+}
 
 
 
