@@ -113,9 +113,14 @@ const Hello = () => {
 
 
               <TabPanel>
-                <Text fontSize='md'>Sandık, bir anket oluşturma platformudur. Merak ettiğiniz ve kamoyu araştırmalarınız için kullanabileceğiniz, objektif ve tarafsız bir platformdur.
-                  Anketler de özgürce fikirlerinizi ve düşüncelerinizi paylaşabilir ve belirtebilirsiniz.
-                  Platformumuza hemen  <Link borderRadius={5} bg='gray.600' href="/register" >Üye Ol</Link> kullanmaya başla.
+                <Text fontSize='md'>
+                Sandık,birçok kişinin fikirlerini öğrenmek ve yorumlamak için oluşturulan global bir anket platformudur. 
+                Merak ettiğiniz ve kamoyu araştırmalarınız için kullanabileceğiniz,objektif ve tarafsız sonuçları sizlere sunmaktadır. 
+                Ayrıca anketlere katılarak özgürce düşüncelerinizi paylaşabilir ve sonuçlara katkı sağlayabilirsiniz. 
+                Kişisel düşüncelerin korunması kapsamında,oy kullananların bilgileri hiçbir şekilde anket sahibi ile paylaşılmayacaktır. 
+                Anket sahibi sadece oylama sonucunu yüzdesel olarak görebilecektir. 
+                Sende Sandık'ta yer alarak öngörülmesi güç olan sorularına cevap bulabilirsin. 
+                Hadi sende platformumuza hemen <Link  borderRadius={5} bg='gray.600' href="/register" >Üye Ol</Link> ve kullanmaya başla.
                 </Text>
                 <Tabs mt={8}>
                   <HStack >
