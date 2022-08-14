@@ -34,7 +34,7 @@ export default function Register() {
         <Container maxW='400px' color='black'>
           <Flex direction="column" alignItems="center">
             <Image boxSize='120px' mb={4} src={sign} />
-            <Text lineHeight='110%' mb={5} as='sub' fontSize='sm' color='black'>
+            <Text lineHeight='110%' mb={5} as='sub' fontSize='sm' color='white'>
               "Sandık'ta oylamaya bende varım!" diyorsan hemen kaydol </Text>
             <Input border='2px' type='text' value={displayName} placeholder='Kullanıcı Adı' mt={4} mb={4} onChange={e => setDisplayName(e.target.value)} />
             <Input border='2px' type='text' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
@@ -45,7 +45,7 @@ export default function Register() {
             </Button>
           </Flex>
           <Center>
-            <Text mt={5} as='sub' fontSize='sm' color='black' >
+            <Text mt={5} as='sub' fontSize='sm' color='white' >
               Hesabın zaten var mı ? O zaman <Link color="red" fontWeight='bold' href='/login'>Giriş Yap</Link>
             </Text>
           </Center>
