@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Divider, List, ListItem, Text } from '@chakra-ui/react'
+import { Box, Divider, Flex, List, ListItem, Text } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
 
 
@@ -15,7 +15,10 @@ const CommentsList = ({ comments }) => {
                 <ListItem>
                     {comments && comments.map((item, index) => (
                         <Box key={index} w={250} borderRadius={5} mt={3} bg='gray.500'>
-                            <Text ml={2}>{item.text}</Text>
+                            <Flex justifyContent='space-between' alignItems='center' p={2}>
+                                <Text ml={2}>{item.text}</Text>
+                                <Text fontStyle='italic' fontSize={12}>{item.displayName}  <hr></hr></Text>
+                            </Flex>
                         </Box>
                     ))}
                 </ListItem>

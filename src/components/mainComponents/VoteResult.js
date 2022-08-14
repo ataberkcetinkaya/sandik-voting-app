@@ -47,5 +47,4 @@ const VoteResult = ({ item }) => {
         )
     }
 }
-
 export default VoteResult
