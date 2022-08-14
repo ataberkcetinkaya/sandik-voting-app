@@ -12,10 +12,8 @@ import {
   Button
 } from '@chakra-ui/react';
 import { addVote } from '../../firebase';
-import { uuidv4 } from '@firebase/util';
 
 const Create = () => {
-
   const { user } = useSelector(state => state.auth)
 
   const sideTemp = {
@@ -81,7 +79,7 @@ const Create = () => {
       <FormControl as='fieldset'>
         <form onSubmit={handleSubmit}>
           <FormLabel as='legend'>Oylama Başlığı</FormLabel>
-          <Input type="text" border='2px' onChange={changeHead} placeholder='Örn: Yerel seçimlerde kime oy vermeyi düşnüyorsunuz ?' />
+          <Input required type="text" border='2px' onChange={changeHead} placeholder='Örn: Yerel seçimlerde kime oy vermeyi düşnüyorsunuz ?' />
           <FormHelperText>Oylama başlığı aynı zamanda sizin ana temanızdır.</FormHelperText>
 
           <FormLabel as='legend'>Taraf Sayısı</FormLabel>
@@ -105,7 +103,7 @@ const Create = () => {
               ))
             }
           </Box>
-          <Button type='submit' width='100%' mt='3' _hover={{ opacity: '.8' }}>Yayınla</Button>
+          <Button backgroundColor='red.600 !important' type='submit' width='100%' mt='3' _hover={{ opacity: '.8' }}>Yayınla</Button>
         </form>
       </FormControl>
     </Container>
