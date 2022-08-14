@@ -15,11 +15,11 @@ const Hello = () => {
     <Center>
       <Container maxWidth="container.lg">
         <Flex wrap='nowrap' align='center' justifyContent='space-between' marginTop={25}>
-          <Heading color='white' flex='3' fontStyle="italic" fontSize={24} width={700} textAlign= {{sm: "center", md: "left"}}>
+          <Heading color='white' flex='3' fontStyle="italic" fontSize={24} width={700} textAlign={{ sm: "center", md: "left" }}>
             Sandık, içerisinde kendi görüşüne göre oy kullan ve diğer kullanılan
             oylar hakkında kendi fikrini özgürce paylaş !
           </Heading>
-          <Box flex='1' display={{ md: 'flex',sm:'none' }} marginLeft={100}>
+          <Box flex='1' display={{ md: 'flex', lg: 'flex', sm: 'none', base: 'none' }} marginLeft={100}>
             <Image src={helloBg} alt="bg" />
           </Box>
         </Flex>
@@ -39,12 +39,12 @@ const Hello = () => {
 
             <TabPanels mt={8}>
               <TabPanel  >
-                <Wrap>
-                  <Flex flex= {{ md:'0.24', sm:'auto' }} width ={{ sm:'100%' }} justifyContent= {{sm: "center", md: "left"}} >
+                <Flex justifyContent={'center'} flexDirection={{ sm: 'column', base: 'column', lg: 'row' }}>
+                  <Flex mt={10} flex={{ md: '0.24', sm: 'auto' }} width={{ sm: '100%' }} justifyContent={{ sm: "center", md: "left", base: 'center' }} >
                     <WrapItem mb={{ sm: 10, md: 0 }}>
                       <VStack>
                         <Link isExternal>
-                          <Avatar size='xl' ml={5} name='Ataberk Çetinkaya' src='https://avatars.githubusercontent.com/u/67511186?v=4' />
+                          <Avatar size='xl' ml={5} mx={'auto'} name='Ataberk Çetinkaya' src='https://avatars.githubusercontent.com/u/67511186?v=4' />
                         </Link>
                         <Text fontSize={19} ><b>Ataberk Çetinkaya</b></Text>
                         <HStack >
@@ -56,8 +56,8 @@ const Hello = () => {
                       </VStack>
                     </WrapItem>
                   </Flex>
-                  <Flex flex= {{ md:'0.23', sm:'auto' }} width ={{ sm:'100%' }} justifyContent= {{sm: "center", md: "left"}}>
-                    <WrapItem  mb={{ sm: 10, md: 0 }}>
+                  <Flex mt={10} flex={{ md: '0.23', sm: 'auto' }} width={{ sm: '100%' }} justifyContent={{ sm: "center", md: "left", base: 'center' }}>
+                    <WrapItem mb={{ sm: 10, md: 0 }}>
                       <VStack>
                         <Link isExternal>
                           <Avatar size='xl' name='Merve Gölpınar' src='https://avatars.githubusercontent.com/u/93581835?v=4' />
@@ -74,8 +74,8 @@ const Hello = () => {
                       </VStack>
                     </WrapItem>
                   </Flex>
-                  <Flex flex= {{ md:'0.22', sm:'auto' }} width ={{ sm:'100%' }} justifyContent= {{sm: "center", md: "left"}} >
-                    <WrapItem  mb={{ sm: 10, md: 0 }}>
+                  <Flex mt={10} flex={{ md: '0.22', sm: 'auto' }} width={{ sm: '100%' }} justifyContent={{ sm: "center", md: "left", base: 'center' }} >
+                    <WrapItem mb={{ sm: 10, md: 0 }}>
                       <VStack>
                         <Link isExternal>
                           <Avatar size='xl' name='Mert Aytuğ Gök' src='https://avatars.githubusercontent.com/u/91254283?v=4s' />
@@ -92,8 +92,8 @@ const Hello = () => {
                       </VStack>
                     </WrapItem>
                   </Flex>
-                  <Flex flex= {{ md:'0.22', sm:'auto' }} width ={{ sm:'100%' }} justifyContent= {{sm: "center", md: "left"}}>
-                    <WrapItem  mb={{ sm: 10, md: 0 }}>
+                  <Flex mt={10} flex={{ md: '0.22', sm: 'auto' }} width={{ sm: '100%' }} justifyContent={{ sm: "center", md: "left", base: 'center' }}>
+                    <WrapItem mb={{ sm: 10, md: 0 }}>
                       <VStack>
                         <Link isExternal>
                           <Avatar size='xl' name='Yavuz Selim Şerifoğlu' src='https://avatars.githubusercontent.com/u/70685127?v=4' />
@@ -110,19 +110,19 @@ const Hello = () => {
                       </VStack>
                     </WrapItem>
                   </Flex>
-                </Wrap>
+                </Flex>
               </TabPanel>
 
 
               <TabPanel>
                 <Text fontSize='md'>
-                Sandık,birçok kişinin fikirlerini öğrenmek ve yorumlamak için oluşturulan global bir anket platformudur. 
-                Merak ettiğiniz ve kamoyu araştırmalarınız için kullanabileceğiniz,objektif ve tarafsız sonuçları sizlere sunmaktadır. 
-                Ayrıca anketlere katılarak özgürce düşüncelerinizi paylaşabilir ve sonuçlara katkı sağlayabilirsiniz. 
-                Kişisel düşüncelerin korunması kapsamında,oy kullananların bilgileri hiçbir şekilde anket sahibi ile paylaşılmayacaktır. 
-                Anket sahibi sadece oylama sonucunu yüzdesel olarak görebilecektir. 
-                Sende Sandık'ta yer alarak öngörülmesi güç olan sorularına cevap bulabilirsin. 
-                Hadi sende platformumuza hemen <Link  borderRadius={5} bg='gray.600' href="/register" >Üye Ol</Link> ve kullanmaya başla.
+                  Sandık,birçok kişinin fikirlerini öğrenmek ve yorumlamak için oluşturulan global bir anket platformudur.
+                  Merak ettiğiniz ve kamoyu araştırmalarınız için kullanabileceğiniz,objektif ve tarafsız sonuçları sizlere sunmaktadır.
+                  Ayrıca anketlere katılarak özgürce düşüncelerinizi paylaşabilir ve sonuçlara katkı sağlayabilirsiniz.
+                  Kişisel düşüncelerin korunması kapsamında,oy kullananların bilgileri hiçbir şekilde anket sahibi ile paylaşılmayacaktır.
+                  Anket sahibi sadece oylama sonucunu yüzdesel olarak görebilecektir.
+                  Sende Sandık'ta yer alarak öngörülmesi güç olan sorularına cevap bulabilirsin.
+                  Hadi sende platformumuza hemen <Link borderRadius={5} bg='gray.600' href="/register" >Üye Ol</Link> ve kullanmaya başla.
                 </Text>
                 <Tabs mt={8}>
                   <HStack >
