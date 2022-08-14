@@ -6,7 +6,7 @@ const VoteResult = ({ item }) => {
     if (item) {
         return (
             <ListItem mt={3} backgroundColor='gray.700'>
-                <Box padding={4} borderRadius='10' border='1px' borderColor='gray.400'>
+                <Box padding={4} borderRadius={{ sm: '0', lg: '10px' }} border={{ sm: '0', lg: '1px' }} borderColor='gray.400'>
                     <Text
                         fontSize='16px' >
                         <b>Sonraki seçimde oyunuzu hangi partiye vermeyi düşünüyorsunuz ?</b>
