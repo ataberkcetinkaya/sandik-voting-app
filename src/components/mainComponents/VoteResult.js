@@ -9,7 +9,7 @@ const VoteResult = ({ item }) => {
                 <Box padding={4} borderRadius={{ sm: '0', lg: '10px' }} border={{ sm: '0', lg: '1px' }} borderColor='gray.400'>
                     <Text
                         fontSize='16px' >
-                        <b>Sonraki seçimde oyunuzu hangi partiye vermeyi düşünüyorsunuz ?</b>
+                        <b>{item.head}</b>
                     </Text>
                     <Container mt={5}>
                         {item.sidesArray.map((item, index) => (
