@@ -9,8 +9,6 @@ const Main = () => {
   const { user } = useSelector(state => state.auth)
   const { voteArray } = useSelector(state => state.vote)
 
-  console.log(voteArray);
-
   const cloneVote = () => {
     let deepClone = JSON.parse(JSON.stringify(voteArray));
     deepClone.defaultForm = true;

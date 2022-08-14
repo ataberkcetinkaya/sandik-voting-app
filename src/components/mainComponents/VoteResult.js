@@ -30,7 +30,7 @@ const VoteResult = ({ item }) => {
                         ))}
                         <Flex alignItems='center' justifyContent='space-between' mt={3}>
                             <HStack>
-                                <Text><b>8</b></Text>
+                                <Text><b>{item.comments.length}</b></Text>
                                 <ChatIcon w="22px" h="22px" />
                             </HStack>
 

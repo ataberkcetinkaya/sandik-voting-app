@@ -12,9 +12,12 @@ import {
   Button
 } from '@chakra-ui/react';
 import { addVote } from '../../firebase';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
   const { user } = useSelector(state => state.auth)
+  const navigate = useNavigate();
 
   const sideTemp = {
     count: 0,
@@ -63,7 +66,6 @@ const Create = () => {
   const changeSideText = (e, index) => {
     const newArr = [...votingObj.sidesArray];
     newArr[index].text = e.target.value;
-    console.log(votingObj);
     setVotingObj({ ...votingObj, sidesArray: newArr })
   }
 
@@ -71,6 +73,8 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await addVote({ ...votingObj });
+    toast.success('Başarıyla bir oylama oluşturdun');
+    navigate('/main');
   }
 
   return (
