@@ -24,10 +24,10 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Center h='400px'>
-        <Container color='black'>
+        <Container>
           <Flex direction="column" alignItems="center">
-            <Image boxSize='120px' mb={4} src={useLogin} />
-            <Text lineHeight='110%' mb={8} as='sub' fontSize='sm' color='black'>
+            <Image boxSize='120px' mb={4} src={useLogin} color='white' />
+            <Text lineHeight='110%' mb={8} as='sub' fontSize='sm' >
               Size özel alana girmek ve Sandık'ta oylamak için lütfen giriş yapın </Text>
             <Input w='300px' type='email' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
             <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
@@ -36,7 +36,7 @@ const Login = () => {
             </Button>
           </Flex>
           <Center>
-            <Text mt={5} as='sub' fontSize='sm' color='black'>
+            <Text mt={5} as='sub' fontSize='sm' color='white'>
               Yoksa sen sandık platformuna üye değil misin ? Hemen <Link color='red' fontWeight='bold' href='/register'>
                 Kayıt Ol
               </Link>

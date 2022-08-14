@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Center, SimpleGrid } from '@chakra-ui/react'
+import { Center, Flex } from '@chakra-ui/react'
 import { addComment } from '../../firebase'
 import { useSelector } from 'react-redux'
 import { CommentAdd, CommentsList } from '../../components/commentsComponets'
@@ -36,10 +36,10 @@ const Comments = () => {
 
   return (
     <Center>
-      <SimpleGrid columns={2} spacingX='150px'>
+      <Flex gridGap={10} flexDirection={{ base: 'column-reverse', sm: 'column-reverse', lg: 'row', }}>
         <CommentsList comments={comments} />
         <CommentAdd voteArray={voteArray} handleSubmit={handleSubmit} changeSelector={changeSelector} />
-      </SimpleGrid>
+      </Flex>
     </Center >
   )
 }
