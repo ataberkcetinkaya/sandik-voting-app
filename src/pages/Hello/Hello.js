@@ -1,4 +1,4 @@
-import { Avatar, Box, Container, Flex, Heading, Image, TabPanels, TabList, Tab, TabPanel, Tabs, Wrap, WrapItem, Text, HStack, Link, Icon, Center, VStack, ScaleFade, useDisclosure, Img } from '@chakra-ui/react'
+import { Avatar, Box, Container, Flex, Heading, Image, TabPanels, TabList, Tab, TabPanel, Tabs, WrapItem, Text, HStack, Link, Center, VStack, Img } from '@chakra-ui/react'
 import React from 'react'
 import helloBg from '../../assets/helloBg.png'
 import LinkedinIcon from '../../assets/LinkedinIcon.png'
@@ -8,9 +8,6 @@ import { EditIcon, ExternalLinkIcon, EmailIcon, ChatIcon } from '@chakra-ui/icon
 
 
 const Hello = () => {
-
-
-
   return (
     <Center>
       <Container maxWidth="container.lg">
@@ -145,7 +142,7 @@ const Hello = () => {
                 <Text>Projemize Açık Kaynak Kodları İçin..</Text>
                 <Link href=' https://github.com/serifselim/sandik-voting-app'>
                   <HStack mt={3}>
-                    <Img Width={40} src={GithubIcon} />
+                    <Img width={40} src={GithubIcon} />
                     <Img maxWidth={110} src={GithubLogo} />
                   </HStack>
                 </Link>

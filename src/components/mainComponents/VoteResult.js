@@ -1,11 +1,11 @@
 import { ChatIcon } from '@chakra-ui/icons'
-import { Box, ListItem, Container, Flex, HStack, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Box, ListItem, Container, Flex, HStack, Link, Text } from '@chakra-ui/react'
 import React from 'react'
 
 const VoteResult = ({ item }) => {
     if (item) {
         return (
-            <ListItem mt={3} backgroundColor='gray.700'>
+            <ListItem mt={3} mb={3} minWidth={'400px'} backgroundColor='gray.700'>
                 <Box padding={4} borderRadius={{ sm: '0', lg: '10px' }} border={{ sm: '0', lg: '1px' }} borderColor='gray.400'>
                     <Text
                         fontSize='16px' >
