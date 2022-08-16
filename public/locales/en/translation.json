@@ -1,0 +1,73 @@
+{
+
+    "_comment1": "HELLO PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "register": "Register",
+    "login": "Login",
+    "greeting": "Vote according to your opinion in Sandik and freely share your opinion about other votes!",
+    "helloFirstLabel": "Developers of the Project",
+    "helloSecondLabel": "About the App",
+    "helloThirdLabel": "Contact",
+    "aboutTheAppText": "Sandik is a global survey platform created to learn and interpret the ideas of many people. It offers you objective and unbiased results that you are curious about and that you can use for your public research. You can also freely share your thoughts and contribute to the results by participating in the surveys. As part of the protection of personal opinions, the information of the voters will not be shared with the survey owner in any way. The poll owner will only be able to see the voting result as a percentage. You can find answers to your questions that are difficult to predict by taking part in Sandik. Come on, ",
+    "aboutTheAppText2": "Register today",
+    "aboutTheAppText3": " and start using it.",
+    "createPollText": "Create Your Poll",
+    "sharePollText": "Share and See Results",
+    "commentText": "Share Your Opinions Under Comments",
+    "githubText": "For Open Source Codes of Our Project..",
+
+
+    "_comment2": "REGISTER PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "registerLabel": "If you are sayin' \"I'm in the voting at Sandik\", sign up now",
+    "username": "Username",
+    "email": "E-Mail",
+    "password": "Password",
+    "passwordAgain": "Repeat Password",
+    "registerButton": "Register",
+    "registerInfo": "Already have an account? ",
+    "registerInfo2": "Login here",
+    "homeButton": "Home",
+
+
+    "_comment3": "LOGIN PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "loginLabel": "To access private area for you and vote in Sandik, please login",
+    "loginButton": "Login",
+    "loginInfo": "Don't you have an account yet? Now ",
+    "loginInfo2": "Register here",
+
+
+    "_comment4": "VOTES PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "whoCreatedInfo": "Created by: ",
+    "createPollButton": "Create a Poll",
+    "gotoCommentsButton": "Go To Comments",
+    "logoutButton": "Log Out",
+    "theArenaButton": "Arena",
+    "closeButton":  "Close",
+
+
+    "_comment5": "CREATE VOTE PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "userCreatePoolText": "Create Your Custom Poll",
+    "pollTitle": "Poll Title",
+    "pollExampleTitle": "eg: Who will be the next President of the USA?",
+    "pollTitleInfo": "The voting title is also your main theme.",
+    "numberOfSides": "Number of Sides",
+    "two": "2 Sides",
+    "three": "3 Sides",
+    "four": "4 Sides",
+    "pollProgressInfo": "You can choose up to 4 sides for the voting to progress properly.",
+    "firstAnswer": "Answer",
+    "publishPollButton": "Publish",
+
+
+    "_comment6": "COMMENTS PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "commentTitle": "Comments",
+    "sendCommentTitle": "Send a Comment",
+    "choosePollText": "Please Select a Poll",
+    "typeCommentText": "Type your comment...",
+    "sendCommentButton": "Send the Comment"
+}

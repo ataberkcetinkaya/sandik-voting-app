@@ -5,16 +5,18 @@ import LinkedinIcon from '../../assets/LinkedinIcon.png'
 import GithubLogo from '../../assets/GithubLogo.png'
 import GithubIcon from '../../assets/GithubIcon.png'
 import { EditIcon, ExternalLinkIcon, EmailIcon, ChatIcon } from '@chakra-ui/icons'
-
+import { useTranslation } from 'react-i18next'
 
 const Hello = () => {
+
+  const { t } = useTranslation();
+
   return (
     <Center>
       <Container maxWidth="container.lg">
         <Flex wrap='nowrap' align='center' justifyContent='space-between' marginTop={25}>
           <Heading color='white' flex='3' fontStyle="italic" fontSize={24} width={700} textAlign={{ sm: "center", md: "left" }}>
-            Sandık, içerisinde kendi görüşüne göre oy kullan ve diğer kullanılan
-            oylar hakkında kendi fikrini özgürce paylaş !
+            {t('greeting')}
           </Heading>
           <Box flex='1' display={{ md: 'flex', lg: 'flex', sm: 'none', base: 'none' }} marginLeft={100}>
             <Image src={helloBg} alt="bg" />
@@ -26,9 +28,9 @@ const Hello = () => {
           <Box>
             <Center>
               <TabList >
-                <Tab color='white' mr={3}>Projeyi Geliştirenler</Tab>
-                <Tab color='white' mr={3}>Uygulama Hakkında</Tab>
-                <Tab color='white' >İletişim</Tab>
+                <Tab color='white' mr={3}>{t('helloFirstLabel')}</Tab>
+                <Tab color='white' mr={3}>{t('helloSecondLabel')}</Tab>
+                <Tab color='white'>{t('helloThirdLabel')}</Tab>
               </TabList>
             </Center>
 
@@ -113,33 +115,29 @@ const Hello = () => {
 
               <TabPanel>
                 <Text fontSize='md'>
-                  Sandık,birçok kişinin fikirlerini öğrenmek ve yorumlamak için oluşturulan global bir anket platformudur.
-                  Merak ettiğiniz ve kamoyu araştırmalarınız için kullanabileceğiniz,objektif ve tarafsız sonuçları sizlere sunmaktadır.
-                  Ayrıca anketlere katılarak özgürce düşüncelerinizi paylaşabilir ve sonuçlara katkı sağlayabilirsiniz.
-                  Kişisel düşüncelerin korunması kapsamında,oy kullananların bilgileri hiçbir şekilde anket sahibi ile paylaşılmayacaktır.
-                  Anket sahibi sadece oylama sonucunu yüzdesel olarak görebilecektir.
-                  Sende Sandık'ta yer alarak öngörülmesi güç olan sorularına cevap bulabilirsin.
-                  Hadi sende platformumuza hemen <Link borderRadius={5} bg='gray.600' href="/register" >Üye Ol</Link> ve kullanmaya başla.
+                  {t('aboutTheAppText')} 
+                    <Link borderRadius={5} bg='gray.600' href="/register">{t('aboutTheAppText2')}</Link> 
+                    {t('aboutTheAppText3')}
                 </Text>
                 <Tabs mt={8}>
                   <HStack >
-                    <EmailIcon /><Link href="/register">Üye Ol</Link><Text>/</Text><Link href="/login">Giriş Yap</Link>
+                    <EmailIcon /><Link href="/register">{t('register')}</Link><Text>/</Text><Link href="/login">{t('login')}</Link>
                   </HStack>
                   <HStack mt={3}>
-                    <EditIcon /><Text>Anketini Oluştur</Text>
+                    <EditIcon /><Text>{t('createPollText')}</Text>
                   </HStack>
                   <HStack mt={3}>
-                    <ExternalLinkIcon /><Text>Paylaş ve Sonuçları Görüntüle</Text>
+                    <ExternalLinkIcon /><Text>{t('sharePollText')}</Text>
                   </HStack>
                   <HStack mt={3}>
-                    <ChatIcon /><Text>Yorumlarda Fikirlerini Paylaş</Text>
+                    <ChatIcon /><Text>{t('commentText')}</Text>
                   </HStack>
                 </Tabs>
 
               </TabPanel>
 
               <TabPanel>
-                <Text>Projemize Açık Kaynak Kodları İçin..</Text>
+                <Text>{t('githubText')}</Text>
                 <Link href=' https://github.com/serifselim/sandik-voting-app'>
                   <HStack mt={3}>
                     <Img width={40} src={GithubIcon} />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Box,
   Flex,
@@ -11,7 +11,7 @@ import {
   Icon,
   Text
 } from '@chakra-ui/react'
-import { TriangleDownIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, TriangleDownIcon } from '@chakra-ui/icons'
 import { Link } from 'react-router-dom'
 // Assets
 import logo from '../../assets/logo.png'
@@ -21,6 +21,9 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 // Firebase
 import { logout } from '../../firebase'
+import LocaleContext from '../../LocaleContext';
+import i18n from '../../i18n'
+import { useTranslation } from 'react-i18next'
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -33,6 +36,16 @@ const Header = () => {
       replace: true
     })
   }
+
+  const { locale } = useContext(LocaleContext);
+
+  function changeLocale (l) {
+    if (locale !== l) {
+      i18n.changeLanguage(l);
+    }
+  }
+
+  const { t } = useTranslation();
 
   return (
     <Flex
@@ -56,12 +69,12 @@ const Header = () => {
             {({ isOpen }) => (
               <>
                 <MenuButton isActive={isOpen} as={Button} rightIcon={<TriangleDownIcon />}>
-                  {isOpen ? 'Kapat' : user.displayName}
+                  {isOpen ? t('closeButton') : user.displayName}
                 </MenuButton>
                 <MenuList backgroundColor='gray.600'>
-                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => navigate('/create')}>Oylama Oluştur</MenuItem>
-                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => navigate('/comments')}>Yorumlara Git</MenuItem>
-                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} onClick={handleLogout}>Çıkış Yap</MenuItem>
+                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => navigate('/create')}>{t('createPollButton')}</MenuItem>
+                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => navigate('/comments')}>{t('gotoCommentsButton')}</MenuItem>
+                  <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} onClick={handleLogout}>{t('logoutButton')}</MenuItem>
                 </MenuList>
               </>
             )}
@@ -79,7 +92,7 @@ const Header = () => {
               _hover={{ bg: 'red.600', color: 'white' }}
               marginRight={5}
             >
-              Üye Ol
+              {t('register')}
             </Button>
           </Link>
           <Link to="/login">
@@ -87,9 +100,38 @@ const Header = () => {
               variant="outline"
               _hover={{ bg: 'red.600', color: 'white' }}
             >
-              Giriş Yap
+              {t('login')}
             </Button>
+            
           </Link>
+
+          <Menu>
+            <MenuButton variant="outline" ml={5} as={Button} rightIcon={<ChevronDownIcon />}>
+              Dil / Language
+            </MenuButton>
+            <MenuList backgroundColor='gray.600'>
+              <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} mb={2} onClick={() => changeLocale('en')}>
+              <Image
+                boxSize='2rem'
+                borderRadius='full'
+                src='https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png'
+                alt='Fluffybuns the destroyer'
+                mr='12px'
+              />
+                English
+              </MenuItem>
+              <MenuItem _hover={{ backgroundColor: 'gray.700 !important' }} onClick={() => changeLocale('tr')}>
+              <Image
+                boxSize='2rem'
+                borderRadius='full'
+                src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Flag_of_Turkey.svg/1200px-Flag_of_Turkey.svg.png'
+                alt='Fluffybuns the destroyer'
+                mr='12px'
+              />
+                Turkish
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Box>
       )}
 
@@ -97,7 +139,7 @@ const Header = () => {
         <Box>
           <Link to="/main">
             <Button variant="outline" _hover={{ bg: 'red.600', color: 'white' }}>
-              Meydan
+              {t('theArenaButton')}
             </Button>
           </Link>
         </Box>
@@ -107,7 +149,7 @@ const Header = () => {
         <Box>
           <Link to="/">
             <Button variant="outline" _hover={{ bg: 'red.600', color: 'white' }}>
-              Ana Sayfa
+              {t('homeButton')}
             </Button>
           </Link>
         </Box>

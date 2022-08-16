@@ -1,0 +1,73 @@
+{
+
+    "_comment1": "HELLO PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "register": "Üye Ol",
+    "login": "Giriş Yap",
+    "greeting": "Sandık, içerisinde kendi görüşüne göre oy kullan ve diğer kullanılan oylar hakkında kendi fikrini özgürce paylaş!",
+    "helloFirstLabel": "Projeyi Geliştirenler",
+    "helloSecondLabel": "Uygulama Hakkında",
+    "helloThirdLabel": "İletişim",
+    "aboutTheAppText": "Sandık, birçok kişinin fikirlerini öğrenmek ve yorumlamak için oluşturulan global bir anket platformudur. Merak ettiğiniz ve kamoyu araştırmalarınız için kullanabileceğiniz, objektif ve tarafsız sonuçları sizlere sunmaktadır. Ayrıca anketlere katılarak özgürce düşüncelerinizi paylaşabilir ve sonuçlara katkı sağlayabilirsiniz. Kişisel düşüncelerin korunması kapsamında, oy kullananların bilgileri hiçbir şekilde anket sahibi ile paylaşılmayacaktır. Anket sahibi sadece oylama sonucunu yüzdesel olarak görebilecektir. Sende Sandık'ta yer alarak öngörülmesi güç olan sorularına cevap bulabilirsin. Hadi sende platformumuza hemen ",
+    "aboutTheAppText2": "Üye Ol",
+    "aboutTheAppText3": " kullanmaya başla.",
+    "createPollText": "Anketini Oluştur",
+    "sharePollText": "Paylaş ve Sonuçları Görüntüle",
+    "commentText": "Yorumlarda Fikirlerini Paylaş",
+    "githubText": "Projemizin Açık Kaynak Kodları İçin..",
+
+
+    "_comment2": "REGISTER PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "registerLabel": "\"Sandık'ta oylamaya bende varım!\" diyorsan hemen kaydol",
+    "username": "Kullanıcı Adı",
+    "email": "E-Mail",
+    "password": "Şifre",
+    "passwordAgain": "Şifre Tekrarı",
+    "registerButton": "Kayıt Ol",
+    "registerInfo": "Hesabın zaten var mı? O zaman ",
+    "registerInfo2": "Giriş Yap",
+    "homeButton": "Ana Sayfa",
+
+
+    "_comment3": "LOGIN PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "loginLabel": "Size özel alana girmek ve Sandık'ta oylamak için lütfen giriş yapın",
+    "loginButton": "Giriş Yap",
+    "loginInfo": "Yoksa sen sandık platformuna üye değil misin? Hemen ",
+    "loginInfo2": "Kayıt Ol",
+
+
+    "_comment4": "VOTES PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "whoCreatedInfo": "Oluşturan Kullanıcı: ",
+    "createPollButton": "Oylama Oluştur",
+    "gotoCommentsButton": "Yorumlara Git",
+    "logoutButton": "Çıkış Yap",
+    "theArenaButton": "Meydan",
+    "closeButton":  "Kapat",
+
+
+    "_comment5": "CREATE VOTE PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "userCreatePoolText": "Sen de Bir Oylama Oluştur",
+    "pollTitle": "Oylama Başlığı",
+    "pollExampleTitle": "Örn: Yerel Seçimlerde kime oy vermeyi düşünüyorsunuz?",
+    "pollTitleInfo": "Oylama başlığı aynı zamanda sizin ana temanızdır.",
+    "numberOfSides": "Taraf Sayısı",
+    "two": "2 Taraf",
+    "three": "3 Taraf",
+    "four": "4 Taraf",
+    "pollProgressInfo": "Oylamanın sağlıklı ilerlemesi için en fazla 4 adet taraf seçebilirsiniz.",
+    "firstAnswer": "Yanıt",
+    "publishPollButton": "Yayınla",
+
+
+    "_comment6": "COMMENTS PAGE TRANSLATION STARTS HERE!!!!!!!!!",
+
+    "commentTitle": "Yorumlar",
+    "sendCommentTitle": "Yorum Gönder",
+    "choosePollText": "Lütfen Anket Seçimi Yapın",
+    "typeCommentText": "Yorumunuzu giriniz...",
+    "sendCommentButton": "Yorumu Gönder"
+}

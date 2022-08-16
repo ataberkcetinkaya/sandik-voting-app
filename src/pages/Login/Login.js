@@ -3,6 +3,7 @@ import { Input, Container, Button, Center, Image, Text, Link, Flex } from '@chak
 import { login } from '../../firebase';
 import { useNavigate } from "react-router-dom";
 import useLogin from '../../assets/useLogin.png';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
 
@@ -21,6 +22,8 @@ const Login = () => {
     }
   }
 
+  const { t } = useTranslation();
+
   return (
     <form onSubmit={handleSubmit}>
       <Center h='400px'>
@@ -28,17 +31,19 @@ const Login = () => {
           <Flex direction="column" alignItems="center">
             <Image boxSize='120px' mb={4} src={useLogin} color='white' />
             <Text lineHeight='110%' mb={8} as='sub' fontSize='sm' >
-              Size özel alana girmek ve Sandık'ta oylamak için lütfen giriş yapın </Text>
-            <Input w='300px' type='email' value={email} placeholder='E-Mail' onChange={e => setEmail(e.target.value)} />
-            <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder='Şifre' onChange={e => setPassword(e.target.value)} />
+              {t('loginLabel')}
+            </Text>
+            <Input w='300px' type='email' value={email} placeholder={t('email')} onChange={e => setEmail(e.target.value)} />
+            <Input w='300px' type='password' value={password} mt={4} mb={4} placeholder={t('password')} onChange={e => setPassword(e.target.value)} />
             <Button type="submit" disabled={!email || !password} colorScheme='red' color='white' size='md'>
-              Giriş Yap
+              {t('loginButton')} 
             </Button>
           </Flex>
           <Center>
             <Text mt={5} as='sub' fontSize='sm' color='white'>
-              Yoksa sen sandık platformuna üye değil misin ? Hemen <Link color='red' fontWeight='bold' href='/register'>
-                Kayıt Ol
+              {t('loginInfo')} 
+              <Link color='red' fontWeight='bold' href='/register'>
+              {t('loginInfo2')}
               </Link>
             </Text>
           </Center>

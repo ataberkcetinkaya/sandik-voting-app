@@ -1,14 +1,17 @@
 import React from 'react'
 import { Box, Divider, Flex, List, ListItem, Text } from '@chakra-ui/react'
 import { ChatIcon } from '@chakra-ui/icons'
-
+import { useTranslation } from 'react-i18next'
 
 const CommentsList = ({ comments }) => {
+
+    const { t } = useTranslation();
+
     return (
         <Box>
             <Text fontSize='4xl'>
                 <ChatIcon color='red.500' />
-                <b> Yorumlar </b>
+                <b> {t('commentTitle')} </b>
             </Text>
             <Divider mt={2} boxShadow='red-lg' p='1' spacing='8' rounded='xl' bg='red' />
             <List mt={7} spacing={3} display={'flex'}>

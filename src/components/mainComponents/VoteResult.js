@@ -1,8 +1,12 @@
 import { ChatIcon } from '@chakra-ui/icons'
 import { Box, ListItem, Container, Flex, HStack, Link, Text } from '@chakra-ui/react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const VoteResult = ({ item }) => {
+
+    const { t } = useTranslation();
+
     if (item) {
         return (
             <ListItem mt={3} mb={3} minWidth={'400px'} backgroundColor='gray.700'>
@@ -38,7 +42,8 @@ const VoteResult = ({ item }) => {
                                 w={200}
                                 textAlign='right'
                                 fontSize='12px'>
-                                <Link color='brand.theRed'>{item.displayName}</Link>, tarafından oluşturuldu</Text>
+                                {t('whoCreatedInfo')}
+                                <Link color='brand.theRed'>{item.displayName}</Link></Text>
                         </Flex>
                     </Container>
                 </Box>

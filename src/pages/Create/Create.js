@@ -14,6 +14,7 @@ import {
 import { addVote } from '../../firebase';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
 
 const Create = () => {
   const { user } = useSelector(state => state.auth)
@@ -77,22 +78,24 @@ const Create = () => {
     navigate('/main');
   }
 
+  const { t } = useTranslation();
+
   return (
     <Container p='9' backgroundColor='gray.700' borderRadius='10'>
-      <Heading>Sende Bir Oylama Oluştur</Heading>
+      <Heading>{t('userCreatePoolText')}</Heading>
       <FormControl as='fieldset'>
         <form onSubmit={handleSubmit}>
-          <FormLabel as='legend'>Oylama Başlığı</FormLabel>
-          <Input required type="text" border='2px' onChange={changeHead} placeholder='Örn: Yerel seçimlerde kime oy vermeyi düşnüyorsunuz ?' />
-          <FormHelperText>Oylama başlığı aynı zamanda sizin ana temanızdır.</FormHelperText>
+          <FormLabel as='legend'>{t('pollTitle')}</FormLabel>
+          <Input required type="text" border='2px' onChange={changeHead} placeholder={t('pollExampleTitle')}/>
+          <FormHelperText mb={2}>{t('pollTitleInfo')}</FormHelperText>
 
-          <FormLabel as='legend'>Taraf Sayısı</FormLabel>
+          <FormLabel as='legend'>{t('numberOfSides')}</FormLabel>
           <Select onChange={changeSideCount} >
-            <option selected value='2'>2 Taraf</option>
-            <option value='3'>3 Taraf</option>
-            <option value='4'>4 Taraf</option>
+            <option selected value='2'>{t('two')}</option>
+            <option value='3'>{t('three')}</option>
+            <option value='4'>{t('four')}</option>
           </Select>
-          <FormHelperText>Oylamanın sağlıklı ilerlemesi için en fazla 4 adet taraf seçebilirsiniz</FormHelperText>
+          <FormHelperText>{t('pollProgressInfo')}</FormHelperText>
 
           <Box>
             {
@@ -102,12 +105,12 @@ const Create = () => {
                   key={index}
                   value={votingObj.sidesArray[index].text}
                   onChange={(e) => changeSideText(e, index)}
-                  placeholder={`${index + 1}. Yanıt`}
-                  required />
+                  placeholder={ `${t('firstAnswer')} ${index + 1}`}
+                  required/>
               ))
             }
           </Box>
-          <Button backgroundColor='red.600 !important' type='submit' width='100%' mt='3' _hover={{ opacity: '.8' }}>Yayınla</Button>
+          <Button backgroundColor='red.600 !important' type='submit' width='100%' mt='3' _hover={{ opacity: '.8' }}>{t('publishPollButton')}</Button>
         </form>
       </FormControl>
     </Container>
