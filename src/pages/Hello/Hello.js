@@ -47,8 +47,8 @@ const Hello = () => {
                         </Link>
                         <Text fontSize={19} ><b>Ataberk Çetinkaya</b></Text>
                         <HStack >
-                          <Link href='https://www.linkedin.com/in/ataberkcetinkaya/'> <Img maxWidth={10} src={LinkedinIcon} /></Link>
-                          <Link href='https://github.com/ataberkcetinkaya'>
+                          <Link href='https://www.linkedin.com/in/ataberkcetinkaya/' isExternal> <Img maxWidth={10} src={LinkedinIcon} /></Link>
+                          <Link href='https://github.com/ataberkcetinkaya' isExternal>
                             <Img w={30} src={GithubIcon} />
                           </Link>
                         </HStack>
@@ -63,8 +63,8 @@ const Hello = () => {
                         </Link>
                         <Text fontSize={19}><b>Merve Gölpınar</b></Text>
                         <HStack>
-                          <Link href='https://www.linkedin.com/in/mervegolpinar/'> <Img maxWidth={10} src={LinkedinIcon} /></Link>
-                          <Link href='https://github.com/mervegolpinar' >
+                          <Link href='https://www.linkedin.com/in/mervegolpinar/' isExternal> <Img maxWidth={10} src={LinkedinIcon} /></Link>
+                          <Link href='https://github.com/mervegolpinar' isExternal>
 
                             <Img w={30} src={GithubIcon} />
 
@@ -81,8 +81,8 @@ const Hello = () => {
                         </Link>
                         <Text fontSize={19}><b>Mert Aytuğ Gök</b></Text>
                         <HStack>
-                          <Link href='https://www.linkedin.com/in/mertaytuggok/'> <Img maxWidth={10} src={LinkedinIcon} /></Link>
-                          <Link href='https://github.com/mertaytuggok'>
+                          <Link href='https://www.linkedin.com/in/mertaytuggok/' isExternal> <Img maxWidth={10} src={LinkedinIcon} /></Link>
+                          <Link href='https://github.com/mertaytuggok' isExternal>
 
                             <Img w={30} src={GithubIcon} />
 
@@ -99,8 +99,8 @@ const Hello = () => {
                         </Link>
                         <Text fontSize={19}><b>Yavuz Selim Şerifoğlu</b></Text>
                         <HStack>
-                          <Link href='https://www.linkedin.com/in/serifselim/'> <Img maxWidth={10} src={LinkedinIcon} /></Link>
-                          <Link href='https://github.com/serifselim'>
+                          <Link href='https://www.linkedin.com/in/serifselim/' isExternal> <Img maxWidth={10} src={LinkedinIcon} /></Link>
+                          <Link href='https://github.com/serifselim' isExternal>
 
                             <Img w={30} src={GithubIcon} />
 
